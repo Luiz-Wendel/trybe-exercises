@@ -86,3 +86,13 @@ aside a {
 aside article h4 {
   text-align: center;
 }
+
+footer {
+  background-color: aqua;
+  text-align: center;
+}
+
+footer p {
+  padding: 10px;
+  margin: 0;
+}
