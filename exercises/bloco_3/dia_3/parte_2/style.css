@@ -1,0 +1,23 @@
+img.super-mario, img.goomba, img.bowser, img.baloon {
+  width: 200px;
+  position: absolute;
+}
+
+img.goomba {
+  top: 380px;
+}
+
+img.baloon {
+  left: 300px;
+}
+
+img.bowser {
+  left: 500px;
+}
+
+p.word {
+  position: absolute;
+  top: 110px;
+  left: 315px;
+  z-index: 1;
+}

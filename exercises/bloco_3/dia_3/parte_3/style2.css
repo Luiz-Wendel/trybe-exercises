@@ -1,0 +1,66 @@
+:root {
+  --primary-color: #E76F51;
+  --secondary-color: #F4A261;
+  --comp-color: #E9C46A;
+  --dark-color: #264653;
+  --light-color: #2A9D8F;
+}
+
+div:hover {
+  border: 5px solid black;
+}
+
+div:nth-of-type(1) {
+   background-color: var(--primary-color);
+}
+
+div:nth-of-type(2) {
+  background-color: var(--secondary-color);
+}
+
+div:nth-of-type(3) {
+  background-color: var(--comp-color);
+}
+
+div:nth-of-type(4) {
+  background-color: var(--dark-color);
+}
+
+div:nth-of-type(5) {
+  background-color: var(--light-color);
+}
+
+div:nth-of-type(1) h3 {
+  color: white;
+}
+
+div:nth-of-type(2) h3 {
+  color: white;
+  font-size: 1em;
+}
+
+div:nth-of-type(3) h3 {
+  color: white;
+  font-size: 1.25em;
+  font-family: serif;
+}
+
+div:nth-of-type(4) h3 {
+  color: white;
+  font-size: 1.5em;
+  font-weight: lighter;
+}
+
+div:nth-of-type(5) h3 {
+  color: white;
+  font-size: 1.75em;
+  font-family: sans-serif;
+}
+
+div:not(:nth-of-type(3)) {
+  width: 25%;
+}
+
+div:nth-of-type(odd) {
+  font-style: italic;
+}
