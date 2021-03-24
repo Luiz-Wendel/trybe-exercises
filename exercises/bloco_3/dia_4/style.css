@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  font-size: 16px;
+}
+
+header {
+  background-color: aqua;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header nav {
+  width: 20vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+header nav a {
+  text-decoration: overline underline;
+  color: black;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+
+header nav a:hover {
+  color: blue;
+}
+
+main h2, main h3, main h4 {
+  color: blue;
+}
+
+main section p {
+  width: 50%;
+}
+
+article#fatos {
+  width: 60vw;
+  margin: 0 auto;
+}
+
+section#informacoes-gerais table,
+section#informacoes-gerais thead th,
+section#informacoes-gerais tbody td {
+  border: 1px solid black;
+}
+
+section img {
+  width: 300px;
+}
+
+figure figcaption {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+aside {
+  background-color: aqua;
+  position: fixed;
+  top: 30vh;
+  left: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+aside ul {
+  list-style: none;
+}
+
+aside ul li {
+  padding: 5px 0;
+}
+
+aside a {
+  text-decoration: overline underline;
+}
+
+aside article h4 {
+  text-align: center;
+}
+
+footer {
+  background-color: aqua;
+  text-align: center;
+}
+
+footer p {
+  padding: 10px;
+  margin: 0;
+}
