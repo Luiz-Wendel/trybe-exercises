@@ -3,7 +3,7 @@
   Defina no começo do programa duas variáveis com os valores que serão comparados.
 */
 
-var a = 2;
-var b = 10;
+var num1 = 2;
+var num2 = 10;
 
-a > b ? console.log(a) : console.log(b);
+num1 > num2 ? console.log(num1) : console.log(num2);

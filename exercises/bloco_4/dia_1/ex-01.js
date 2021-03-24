@@ -10,11 +10,11 @@
   Módulo
 */
 
-var a = 2;
-var b = 10;
+var num1 = 2;
+var num2 = 10;
 
-console.log(a + b);
-console.log(a - b);
-console.log(a * b);
-console.log(a / b);
-console.log(a % b);
+console.log(num1 + num2);
+console.log(num1 - num2);
+console.log(num1 * num2);
+console.log(num1 / num2);
+console.log(num1 % num2);
