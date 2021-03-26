@@ -5,7 +5,7 @@
 
 var number = 2;
 
-if (number > 0) {
+if (number > 1) {
   for (let i = 0; i < number; i += 1) {
     console.log('*'.repeat(number));
   }
