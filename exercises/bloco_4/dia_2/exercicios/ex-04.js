@@ -6,10 +6,10 @@
 let numbers = [5, 9, 3, 19, 70, 8, 100, 2, 35, 27];
 
 var sum = 0;
-var mediaAritmetica = 0;
+var arithmeticAverage = 0;
 
 for (let number of numbers) sum += number;
 
-mediaAritmetica = sum / numbers.length;
+arithmeticAverage = sum / numbers.length;
 
-mediaAritmetica > 20 ? console.log('Valor maior que 20') : console.log('valor menor ou igual a 20');
+arithmeticAverage > 20 ? console.log('Valor maior que 20') : console.log('valor menor ou igual a 20');
