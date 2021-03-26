@@ -8,5 +8,6 @@ let indexOfPortfolio = menu[2];
 
 menu.push('Contato');
 
+console.log(menu);
 console.log(menuServices);
 console.log(indexOfPortfolio);
