@@ -10,7 +10,7 @@ var array = ['José', 'Lucas', 'Nádia', 'Fernanda', 'Cairo', 'Joana'];
 function getBiggestName(array) {
   var biggestName = array[0];
 
-  for (firstName of array) {
+  for (let firstName of array) {
     firstName.length > biggestName.length ? (biggestName = firstName) : '';
   }
 

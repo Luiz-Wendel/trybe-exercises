@@ -10,7 +10,7 @@ var array = [2, 4, 6, 7, 10, 0, -3];
 function getSmallestNumberIndex(array) {
   var smallestNumber = array[0];
 
-  for (number of array) {
+  for (let number of array) {
     number < smallestNumber ? (smallestNumber = number) : '';
   }
 

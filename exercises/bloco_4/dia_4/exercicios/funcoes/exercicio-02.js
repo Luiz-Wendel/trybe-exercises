@@ -10,7 +10,7 @@ var array = [2, 3, 6, 7, 10, 1];
 function getBiggestNumberIndex(array) {
   var biggestNumber = array[0];
 
-  for (number of array) {
+  for (let number of array) {
     number > biggestNumber ? (biggestNumber = number) : '';
   }
 

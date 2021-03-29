@@ -4,7 +4,7 @@ let names = {
   person3: 'Jorge',
 };
 
-for (index in names) {
+for (let index in names) {
   console.log(`Olá ${names[index]}`);
 }
 
@@ -14,7 +14,7 @@ let carro = {
   year: 2020,
 };
 
-for (const key in carro) {
+for (let key in carro) {
   console.log(
     `${key}: ${carro[key]}`
   );

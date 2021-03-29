@@ -11,11 +11,11 @@ function getMostRepeated(array) {
   var temp = [];
   var biggest = 0;
 
-  for (number of array) {
+  for (let number of array) {
     temp[number] === undefined ? (temp[number] = 1) : (temp[number] += 1);
   }
 
-  for (number of temp) {
+  for (let number of temp) {
     if (number > biggest) biggest = number;
   }
 
