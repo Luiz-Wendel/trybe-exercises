@@ -12,3 +12,6 @@
   5. Crie uma função que modifique todo o texto da tag <p> para maiúsculo.
   6. Crie uma função que exiba o conteúdo de todas as tags <p> no console.
 */
+
+document.querySelector('.center-content p:nth-child(2)').innerText =
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
