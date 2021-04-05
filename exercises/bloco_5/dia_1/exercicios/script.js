@@ -23,3 +23,5 @@ document.getElementsByClassName('center-content')[0].style.backgroundColor =
   'white';
 
 document.getElementsByTagName('h1')[0].innerText = 'Exercício 5.1 - JavaScript';
+
+document.querySelectorAll('p').forEach(element => element.style.textTransform = 'uppercase');
