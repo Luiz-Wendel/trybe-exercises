@@ -45,3 +45,5 @@ h1.classList.add('title');
 
 const h3s = document.getElementsByTagName('h3');
 for (let element of h3s) element.classList.add('description');
+
+mainContent.removeChild(leftContent);
