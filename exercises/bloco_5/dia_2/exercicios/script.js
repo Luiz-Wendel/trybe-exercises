@@ -27,3 +27,11 @@ const image = document.createElement('img');
 image.setAttribute('src', 'https://picsum.photos/200');
 image.className = 'small-image';
 leftContent.appendChild(image);
+
+const ul = document.createElement('ul');
+for (let index = 1; index <= 10; index += 1) {
+  const li = document.createElement('li');
+  li.innerText = index;
+  ul.appendChild(li);
+}
+rightContent.appendChild(ul);
