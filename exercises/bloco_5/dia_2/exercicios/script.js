@@ -35,3 +35,8 @@ for (let index = 1; index <= 10; index += 1) {
   ul.appendChild(li);
 }
 rightContent.appendChild(ul);
+
+for (let index = 0; index < 3; index += 1) {
+  const h3 = document.createElement('h3');
+  mainContent.appendChild(h3);
+}
