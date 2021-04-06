@@ -18,3 +18,7 @@ centerContent.appendChild(p);
 const leftContent = div.cloneNode();
 leftContent.className = 'left-content';
 mainContent.appendChild(leftContent);
+
+const rightContent = div.cloneNode();
+rightContent.className = 'right-content';
+mainContent.appendChild(rightContent);
