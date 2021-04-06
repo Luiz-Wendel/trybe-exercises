@@ -51,3 +51,5 @@ mainContent.removeChild(leftContent);
 rightContent.style.marginRight = 'auto';
 
 centerContent.parentElement.style.backgroundColor = 'green';
+
+for (let index = 0; index < 2; index += 1) ul.removeChild(ul.lastElementChild);
