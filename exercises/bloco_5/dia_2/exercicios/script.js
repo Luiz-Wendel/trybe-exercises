@@ -42,3 +42,6 @@ for (let index = 0; index < 3; index += 1) {
 }
 
 h1.classList.add('title');
+
+const h3s = document.getElementsByTagName('h3');
+for (let element of h3s) element.classList.add('description');
