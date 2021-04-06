@@ -22,3 +22,8 @@ mainContent.appendChild(leftContent);
 const rightContent = div.cloneNode();
 rightContent.className = 'right-content';
 mainContent.appendChild(rightContent);
+
+const image = document.createElement('img');
+image.setAttribute('src', 'https://picsum.photos/200');
+image.className = 'small-image';
+leftContent.appendChild(image);
