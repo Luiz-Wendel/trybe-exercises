@@ -49,3 +49,5 @@ for (let element of h3s) element.classList.add('description');
 mainContent.removeChild(leftContent);
 
 rightContent.style.marginRight = 'auto';
+
+centerContent.parentElement.style.backgroundColor = 'green';
