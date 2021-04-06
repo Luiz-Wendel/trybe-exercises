@@ -11,3 +11,6 @@ body.appendChild(mainContent);
 const centerContent = div.cloneNode();
 centerContent.className = 'center-content';
 mainContent.appendChild(centerContent);
+
+const p = document.createElement('p');
+centerContent.appendChild(p);
