@@ -7,3 +7,7 @@ const div = document.createElement('div');
 const mainContent = div.cloneNode();
 mainContent.className = 'main-content';
 body.appendChild(mainContent);
+
+const centerContent = div.cloneNode();
+centerContent.className = 'center-content';
+mainContent.appendChild(centerContent);
