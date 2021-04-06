@@ -43,4 +43,19 @@ elementoOndeVoceEsta.appendChild(novoElemento.cloneNode());
 primeiroFilho.appendChild(novoElemento.cloneNode());
 
 let filhoDoPrimeiroFilho = primeiroFilho.firstElementChild;
-let terceiroFilhoDoFilhoDoPrimeiroFilho = filhoDoPrimeiroFilho.parentElement.nextElementSibling.nextElementSibling;
+let terceiroFilhoDoFilhoDoPrimeiroFilho =
+  filhoDoPrimeiroFilho.parentElement.nextElementSibling.nextElementSibling;
+
+/*
+  Exercicios - Parte III
+  Remova todos os elementos da página, menos pai,
+   elementoOndeVoceEsta e primeiroFilhoDoFilho .
+*/
+
+while (elementoOndeVoceEsta.firstChild.nextElementSibling.nextElementSibling)
+  elementoOndeVoceEsta.removeChild(elementoOndeVoceEsta.lastChild);
+
+while (elementoPai.firstChild.nextElementSibling.nextElementSibling.nextSibling)
+  elementoPai.removeChild(elementoPai.lastChild);
+
+elementoPai.removeChild(elementoPai.firstChild.nextElementSibling)
