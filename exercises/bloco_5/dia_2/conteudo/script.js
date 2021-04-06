@@ -26,3 +26,21 @@ const textoAtencao = elementoOndeVoceEsta.nextSibling;
 const terceiroFilho = elementoOndeVoceEsta.nextElementSibling;
 
 const terceiroFilhoDoPai = elementoPai.lastElementChild.previousElementSibling;
+
+/*
+  Exercicios - Parte II
+  1. Crie um irmão para elementoOndeVoceEsta.
+  2. Crie um filho para elementoOndeVoceEsta.
+  3. Crie um filho para primeiroFilhoDoFilho.
+  4. A partir desse filho criado, acesse terceiroFilho.
+*/
+
+let novoElemento = document.createElement('div');
+elementoPai.appendChild(novoElemento.cloneNode());
+
+elementoOndeVoceEsta.appendChild(novoElemento.cloneNode());
+
+primeiroFilho.appendChild(novoElemento.cloneNode());
+
+let filhoDoPrimeiroFilho = primeiroFilho.firstElementChild;
+let terceiroFilhoDoFilhoDoPrimeiroFilho = filhoDoPrimeiroFilho.parentElement.nextElementSibling.nextElementSibling;
