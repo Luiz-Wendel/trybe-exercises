@@ -34,3 +34,18 @@ divUm.addEventListener('dblclick', resetText);
 // Não precisa passar o parâmetro dentro do addEventListener. O próprio
 // navegador fará esse trabalho por você, não é legal? Desse jeito, o
 // event.target na nossa função retornará o objeto 'divUm'.
+
+function addExclusiveClass(className, tag) {
+  document.getElementsByClassName(className)[0].classList.remove(className);
+  tag.classList.add(className);
+}
+
+function addTechClass(event) {
+  addExclusiveClass('tech', event.target)
+}
+
+let divs = document.querySelector('div.container').children;
+
+for (let div of divs) {
+  div.addEventListener('click', addTechClass);
+}
