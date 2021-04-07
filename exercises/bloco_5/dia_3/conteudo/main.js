@@ -56,3 +56,9 @@ function changeTechElementText(event) {
 
 // input.addEventListener('focus', ({target}) => target.value = '');
 input.addEventListener('keyup', changeTechElementText);
+
+function portfolioRedirect(event) {
+  window.open('https://luiz-wendel.github.io/portfolio-web/', '_blank');
+}
+
+myWebpage.addEventListener('dblclick', portfolioRedirect);
