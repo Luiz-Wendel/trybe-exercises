@@ -71,3 +71,16 @@ function createFridayButton(buttonName) {
 }
 
 createFridayButton('Sexta-feira');
+
+function toggleFridayText() {
+  const fridayDays = document.querySelectorAll('.friday');
+
+  for (const fridayDay of fridayDays) {
+    if (fridayDay.innerText === 'Sextou!') {
+      fridayDay.innerText = parseInt(fridayDay.previousElementSibling.innerText) + 1;
+    } else fridayDay.innerText = 'Sextou!'
+  }
+}
+
+const fridayButton = document.getElementById('btn-friday');
+fridayButton.addEventListener('click', toggleFridayText);
