@@ -49,3 +49,16 @@ function createHolidaysButton(buttonName) {
 }
 
 createHolidaysButton('Feriados');
+
+function toggleHolidayBackgroundColor() {
+  const holidayDays = document.querySelectorAll('.holiday');
+
+  for (const holidayDay of holidayDays) {
+    if (holidayDay.classList.contains('white-background'))
+      holidayDay.classList.remove('white-background');
+    else holidayDay.classList.add('white-background');
+  }
+}
+
+const holidayButton = document.getElementById('btn-holiday');
+holidayButton.addEventListener('click', toggleHolidayBackgroundColor);
