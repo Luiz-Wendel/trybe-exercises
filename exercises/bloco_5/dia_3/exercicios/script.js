@@ -62,3 +62,12 @@ function toggleHolidayBackgroundColor() {
 
 const holidayButton = document.getElementById('btn-holiday');
 holidayButton.addEventListener('click', toggleHolidayBackgroundColor);
+
+function createFridayButton(buttonName) {
+  const fridayButton = document.createElement('button');
+  fridayButton.innerText = buttonName;
+  fridayButton.id = 'btn-friday';
+  document.querySelector('div.buttons-container').appendChild(fridayButton);
+}
+
+createFridayButton('Sexta-feira');
