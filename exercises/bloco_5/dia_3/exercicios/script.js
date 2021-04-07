@@ -84,3 +84,15 @@ function toggleFridayText() {
 
 const fridayButton = document.getElementById('btn-friday');
 fridayButton.addEventListener('click', toggleFridayText);
+
+ulDays.addEventListener('mouseover', function({target}) {
+  if (target.classList.contains('day')) {
+    target.classList.add('zoom');
+  }
+});
+
+ulDays.addEventListener('mouseout', function({target}) {
+  if (target.classList.contains('day')) {
+    target.classList.remove('zoom');
+  }
+});

@@ -157,3 +157,7 @@ label {
 .white-background {
   background-color: white;
 }
+
+.zoom {
+  font-size: 40px !important;
+}
