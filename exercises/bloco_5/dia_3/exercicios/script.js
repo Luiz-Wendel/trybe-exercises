@@ -124,3 +124,12 @@ function toggleSelectedClass({target}) {
 }
 
 myTasks.addEventListener('click', toggleSelectedClass);
+
+function setTaskColor({target}) {
+  if (target.classList.contains('day')) {
+    const color = document.querySelector('div.selected').style.backgroundColor;
+    target.style.color = color;
+  }
+}
+
+ulDays.addEventListener('click', setTaskColor);
