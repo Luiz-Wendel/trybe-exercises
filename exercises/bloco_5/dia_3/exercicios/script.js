@@ -115,3 +115,12 @@ function createTaskDiv(color) {
 }
 
 createTaskDiv('green');
+
+function toggleSelectedClass({target}) {
+  if (target.classList.contains('task')) {
+    if (target.classList.contains('selected')) target.classList.remove('selected');
+    else target.classList.add('selected');
+  }
+}
+
+myTasks.addEventListener('click', toggleSelectedClass);
