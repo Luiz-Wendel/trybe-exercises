@@ -40,3 +40,12 @@ for (const day of decDaysList) {
 
   ulDays.appendChild(newLi);
 }
+
+function createHolidaysButton(buttonName) {
+  const holidayButton = document.createElement('button');
+  holidayButton.innerText = buttonName;
+  holidayButton.id = 'btn-holiday';
+  document.querySelector('div.buttons-container').appendChild(holidayButton);
+}
+
+createHolidaysButton('Feriados');
