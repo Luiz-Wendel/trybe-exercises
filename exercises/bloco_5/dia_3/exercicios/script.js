@@ -106,3 +106,12 @@ function createTaskSpan(task) {
 }
 
 createTaskSpan('cozinhar');
+
+function createTaskDiv(color) {
+  const taskDiv = document.createElement('div');
+  taskDiv.classList.add('task');
+  taskDiv.style.backgroundColor = color;
+  myTasks.appendChild(taskDiv);
+}
+
+createTaskDiv('green');
