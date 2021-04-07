@@ -133,3 +133,23 @@ function setTaskColor({target}) {
 }
 
 ulDays.addEventListener('click', setTaskColor);
+
+const buttonAdd = document.getElementById('btn-add');
+const input = document.getElementById('task-input');
+const taskList = document.querySelector('ul.task-list');
+
+function addTask() {
+  if (input.value) {
+    const newTask = document.createElement('li');
+    newTask.innerText = input.value;
+    taskList.appendChild(newTask);
+  } else alert('Nenhum compromisso definido!');
+}
+
+buttonAdd.addEventListener('click', addTask)
+
+input.addEventListener('keypress', function({key}) {
+  if (key === 'Enter') {
+    addTask();
+  }
+});
