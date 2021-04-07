@@ -62,3 +62,16 @@ function portfolioRedirect(event) {
 }
 
 myWebpage.addEventListener('dblclick', portfolioRedirect);
+
+function changeColor(event) {
+  event.target.style.color = 'darkred';
+  event.target.style.cursor = 'pointer';
+}
+
+function resetColor(event) {
+  event.target.style.color = 'inherit';
+  event.target.style.cursor = 'initial';
+}
+
+myWebpage.addEventListener('mouseover', changeColor);
+myWebpage.addEventListener('mouseout', resetColor);
