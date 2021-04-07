@@ -96,3 +96,13 @@ ulDays.addEventListener('mouseout', function({target}) {
     target.classList.remove('zoom');
   }
 });
+
+const myTasks = document.querySelector('div.my-tasks');
+
+function createTaskSpan(task) {
+  const taskSpan = document.createElement('span');
+  taskSpan.innerText = task;
+  myTasks.appendChild(taskSpan);
+}
+
+createTaskSpan('cozinhar');
