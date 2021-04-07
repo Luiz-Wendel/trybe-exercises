@@ -41,7 +41,7 @@ function addExclusiveClass(className, tag) {
 }
 
 function addTechClass(event) {
-  addExclusiveClass('tech', event.target)
+  addExclusiveClass('tech', event.target);
 }
 
 let divs = document.querySelector('div.container').children;
@@ -49,3 +49,10 @@ let divs = document.querySelector('div.container').children;
 for (let div of divs) {
   div.addEventListener('click', addTechClass);
 }
+
+function changeTechElementText(event) {
+  document.getElementsByClassName('tech')[0].innerText = event.target.value;
+}
+
+// input.addEventListener('focus', ({target}) => target.value = '');
+input.addEventListener('keyup', changeTechElementText);
