@@ -13,9 +13,12 @@ const fontFamilyBtn = document.getElementById('fontFamilyBtn');
 
 header.addEventListener('click', function({target}) {
   if (target.id.includes('Btn')) {
+    let inputValue = target.previousElementSibling.value;
+
     switch (target.id) {
       case 'bgBtn':
-        alert(target.previousElementSibling.value)
+        body.style.backgroundColor = inputValue;
+        localStorage.setItem('bg', inputValue);
         break;
       case 'txtColorBtn':
         alert(target.previousElementSibling.value)
