@@ -10,3 +10,28 @@ const txtColorBtn = document.getElementById('txtColorBtn');
 const fontSizeBtn = document.getElementById('fontSizeBtn');
 const lineHeightBtn = document.getElementById('lineHeightBtn');
 const fontFamilyBtn = document.getElementById('fontFamilyBtn');
+
+header.addEventListener('click', function({target}) {
+  if (target.id.includes('Btn')) {
+    switch (target.id) {
+      case 'bgBtn':
+        alert(target.previousElementSibling.value)
+        break;
+      case 'txtColorBtn':
+        alert(target.previousElementSibling.value)
+        break;
+      case 'fontSizeBtn':
+        alert(target.previousElementSibling.value)
+        break;
+      case 'lineHeightBtn':
+        alert(target.previousElementSibling.value)
+        break;
+      case 'fontFamilyBtn':
+        alert(target.previousElementSibling.value)
+        break;
+      default:
+        alert('Something went wrong!')
+        break;
+    }
+  }
+});
