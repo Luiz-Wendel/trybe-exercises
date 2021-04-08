@@ -21,7 +21,8 @@ header.addEventListener('click', function({target}) {
         localStorage.setItem('bg', inputValue);
         break;
       case 'txtColorBtn':
-        alert(target.previousElementSibling.value)
+        body.style.color = inputValue;
+        localStorage.setItem('txtColor', inputValue);
         break;
       case 'fontSizeBtn':
         alert(target.previousElementSibling.value)
