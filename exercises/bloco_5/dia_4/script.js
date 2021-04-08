@@ -13,7 +13,8 @@ const fontFamilyBtn = document.getElementById('fontFamilyBtn');
 
 header.addEventListener('click', function({target}) {
   if (target.id.includes('Btn')) {
-    let inputValue = target.previousElementSibling.value;
+    const inputValue = target.previousElementSibling.value;
+    const paragraphs = document.getElementsByTagName('p');
 
     switch (target.id) {
       case 'bgBtn':
@@ -25,7 +26,8 @@ header.addEventListener('click', function({target}) {
         localStorage.setItem('txtColor', inputValue);
         break;
       case 'fontSizeBtn':
-        alert(target.previousElementSibling.value)
+        for (let paragraph of paragraphs) paragraph.style.fontSize = `${inputValue}px`;
+        localStorage.setItem('fontSize', `${inputValue}px`)
         break;
       case 'lineHeightBtn':
         alert(target.previousElementSibling.value)
