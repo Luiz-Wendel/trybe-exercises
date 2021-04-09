@@ -1,3 +1,6 @@
+let baseURL = 'https://fonts.googleapis.com/css2?family=FONTNAME&display=swap';
+
+const googleFontLink = document.getElementById('googleFontLink');
 const body = document.getElementsByTagName('body')[0];
 const header = document.getElementById('header');
 const paragraphs = document.getElementsByTagName('p');
@@ -12,6 +15,10 @@ const fontSizeBtn = document.getElementById('fontSizeBtn');
 const lineHeightBtn = document.getElementById('lineHeightBtn');
 const fontFamilyBtn = document.getElementById('fontFamilyBtn');
 
+function setGoogleFontLink(fontName) {
+  return googleFontLink.setAttribute('href', baseURL.replace('FONTNAME', fontName.trim().split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('+')));
+}
+
 function setStyleSingleElement(element, property, value, localStorageKey) {
   element.style[property] = value;
   localStorage.setItem(localStorageKey, value);
@@ -22,7 +29,7 @@ function setStyleMultipleElements(elements, property, value, localStorageKey) {
   localStorage.setItem(localStorageKey, value);
 }
 
-header.addEventListener('click', function({target}) {
+header.addEventListener('click', function ({ target }) {
   if (target.id.includes('Btn')) {
     const inputValue = target.previousElementSibling.value;
 
@@ -34,13 +41,29 @@ header.addEventListener('click', function({target}) {
         setStyleSingleElement(body, 'color', inputValue, 'txtColor');
         break;
       case 'fontSizeBtn':
-        setStyleMultipleElements(paragraphs, 'fontSize', `${inputValue}px`, 'fontSize');
+        setStyleMultipleElements(
+          paragraphs,
+          'fontSize',
+          `${inputValue}px`,
+          'fontSize'
+        );
         break;
       case 'lineHeightBtn':
-        setStyleMultipleElements(paragraphs, 'lineHeight', inputValue, 'lineHeight');
+        setStyleMultipleElements(
+          paragraphs,
+          'lineHeight',
+          inputValue,
+          'lineHeight'
+        );
         break;
       case 'fontFamilyBtn':
-        setStyleMultipleElements(paragraphs, 'fontFamily', inputValue, 'fontFamily');
+        setStyleMultipleElements(
+          paragraphs,
+          'fontFamily',
+          inputValue,
+          'fontFamily'
+        );
+        setGoogleFontLink(inputValue);
         break;
       default:
         alert('Something went wrong!');
@@ -80,6 +103,7 @@ window.onload = () => {
         break;
       case 'fontFamily':
         setLocalStyleMultipleElements(paragraphs, 'fontFamily', propertyValue);
+        setGoogleFontLink(propertyValue);
         break;
       default:
         break;
