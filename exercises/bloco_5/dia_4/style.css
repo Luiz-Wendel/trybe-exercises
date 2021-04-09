@@ -3,6 +3,7 @@
 }
 
 header {
+  background-color: inherit;
   width: 100vw;
   padding: 10px;
   position: fixed;
@@ -43,7 +44,6 @@ p {
 }
 
 .container {
-  border: 1px solid black;
   padding: 5px;
   display: flex;
   flex-direction: column;
