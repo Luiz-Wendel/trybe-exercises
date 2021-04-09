@@ -11,6 +11,11 @@ const fontSizeBtn = document.getElementById('fontSizeBtn');
 const lineHeightBtn = document.getElementById('lineHeightBtn');
 const fontFamilyBtn = document.getElementById('fontFamilyBtn');
 
+function setStyleSingleElement(element, property, value, localStorageKey) {
+  element.style[property] = value;
+  localStorage.setItem(localStorageKey, value);
+}
+
 header.addEventListener('click', function({target}) {
   if (target.id.includes('Btn')) {
     const inputValue = target.previousElementSibling.value;
@@ -18,12 +23,10 @@ header.addEventListener('click', function({target}) {
 
     switch (target.id) {
       case 'bgBtn':
-        body.style.backgroundColor = inputValue;
-        localStorage.setItem('bg', inputValue);
+        setStyleSingleElement(body, 'backgroundColor', inputValue, 'bg');
         break;
       case 'txtColorBtn':
-        body.style.color = inputValue;
-        localStorage.setItem('txtColor', inputValue);
+        setStyleSingleElement(body, 'color', inputValue, 'txtColor');
         break;
       case 'fontSizeBtn':
         for (let paragraph of paragraphs) paragraph.style.fontSize = `${inputValue}px`;
