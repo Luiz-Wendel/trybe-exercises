@@ -27,14 +27,15 @@ header.addEventListener('click', function({target}) {
         break;
       case 'fontSizeBtn':
         for (let paragraph of paragraphs) paragraph.style.fontSize = `${inputValue}px`;
-        localStorage.setItem('fontSize', `${inputValue}px`)
+        localStorage.setItem('fontSize', `${inputValue}px`);
         break;
       case 'lineHeightBtn':
         for (let paragraph of paragraphs) paragraph.style.lineHeight = inputValue;
         localStorage.setItem('lineHeight', inputValue);
         break;
       case 'fontFamilyBtn':
-        alert(target.previousElementSibling.value)
+        for (let paragraph of paragraphs) paragraph.style.fontFamily = inputValue;
+        localStorage.setItem('fontFamily', inputValue);
         break;
       default:
         alert('Something went wrong!')
