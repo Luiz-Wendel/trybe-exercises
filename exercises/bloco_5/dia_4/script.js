@@ -1,5 +1,6 @@
 const body = document.getElementsByTagName('body')[0];
 const header = document.getElementById('header');
+const paragraphs = document.getElementsByTagName('p');
 const bgInput = document.getElementById('bgInput');
 const txtColorInput = document.getElementById('txtColorInput');
 const fontSizeInput = document.getElementById('fontSizeInput');
@@ -24,7 +25,6 @@ function setStyleMultipleElements(elements, property, value, localStorageKey) {
 header.addEventListener('click', function({target}) {
   if (target.id.includes('Btn')) {
     const inputValue = target.previousElementSibling.value;
-    const paragraphs = document.getElementsByTagName('p');
 
     switch (target.id) {
       case 'bgBtn':
@@ -43,8 +43,44 @@ header.addEventListener('click', function({target}) {
         setStyleMultipleElements(paragraphs, 'fontFamily', inputValue, 'fontFamily');
         break;
       default:
-        alert('Something went wrong!')
+        alert('Something went wrong!');
         break;
     }
   }
 });
+
+function setLocalStyleSingleElement(element, property, value) {
+  element.style[property] = value;
+}
+
+function setLocalStyleMultipleElements(elements, property, value) {
+  for (let element of elements) element.style[property] = value;
+}
+
+window.onload = () => {
+  const keys = Object.keys(localStorage);
+
+  for (const property of keys) {
+    const propertyValue = localStorage.getItem(property);
+
+    switch (property) {
+      case 'bg':
+        setLocalStyleSingleElement(body, 'backgroundColor', propertyValue);
+        break;
+      case 'txtColor':
+        setLocalStyleSingleElement(body, 'color', propertyValue);
+        break;
+      case 'fontSize':
+        setLocalStyleMultipleElements(paragraphs, 'fontSize', propertyValue);
+        break;
+      case 'lineHeight':
+        setLocalStyleMultipleElements(paragraphs, 'lineHeight', propertyValue);
+        break;
+      case 'fontFamily':
+        setLocalStyleMultipleElements(paragraphs, 'fontFamily', propertyValue);
+        break;
+      default:
+        break;
+    }
+  }
+};
