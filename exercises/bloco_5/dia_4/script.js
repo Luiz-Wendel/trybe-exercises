@@ -16,6 +16,11 @@ function setStyleSingleElement(element, property, value, localStorageKey) {
   localStorage.setItem(localStorageKey, value);
 }
 
+function setStyleMultipleElements(elements, property, value, localStorageKey) {
+  for (let element of elements) element.style[property] = value;
+  localStorage.setItem(localStorageKey, value);
+}
+
 header.addEventListener('click', function({target}) {
   if (target.id.includes('Btn')) {
     const inputValue = target.previousElementSibling.value;
@@ -29,16 +34,13 @@ header.addEventListener('click', function({target}) {
         setStyleSingleElement(body, 'color', inputValue, 'txtColor');
         break;
       case 'fontSizeBtn':
-        for (let paragraph of paragraphs) paragraph.style.fontSize = `${inputValue}px`;
-        localStorage.setItem('fontSize', `${inputValue}px`);
+        setStyleMultipleElements(paragraphs, 'fontSize', `${inputValue}px`, 'fontSize');
         break;
       case 'lineHeightBtn':
-        for (let paragraph of paragraphs) paragraph.style.lineHeight = inputValue;
-        localStorage.setItem('lineHeight', inputValue);
+        setStyleMultipleElements(paragraphs, 'lineHeight', inputValue, 'lineHeight');
         break;
       case 'fontFamilyBtn':
-        for (let paragraph of paragraphs) paragraph.style.fontFamily = inputValue;
-        localStorage.setItem('fontFamily', inputValue);
+        setStyleMultipleElements(paragraphs, 'fontFamily', inputValue, 'fontFamily');
         break;
       default:
         alert('Something went wrong!')
