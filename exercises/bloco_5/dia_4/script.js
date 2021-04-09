@@ -72,9 +72,11 @@ window.onload = () => {
         break;
       case 'fontSize':
         setLocalStyleMultipleElements(paragraphs, 'fontSize', propertyValue);
+        fontSizeInput.value = parseInt(propertyValue);
         break;
       case 'lineHeight':
         setLocalStyleMultipleElements(paragraphs, 'lineHeight', propertyValue);
+        lineHeightInput.value = propertyValue;
         break;
       case 'fontFamily':
         setLocalStyleMultipleElements(paragraphs, 'fontFamily', propertyValue);
