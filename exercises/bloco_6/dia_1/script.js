@@ -2,6 +2,7 @@ const ibgeURL = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
 
 const form = document.getElementById('curriculum-form');
 const selectState = document.getElementById('state');
+const buttonReset = document.querySelector("button[type='reset']");
 const divData = document.getElementById('data');
 
 const optionElement = document.createElement('option');
@@ -64,10 +65,14 @@ function isValidDate(date) {
   return day > 0 && day <=31 && month > 0 && month <= 12 && year > 0;
 }
 
+function resetForm() {
+  divData.innerHTML = '';
+}
+
 function formSubmit(event) {
   event.preventDefault();
 
-  divData.innerHTML = '';
+  resetForm();
 
   const newTable = tableElement.cloneNode();
   divData.appendChild(newTable);
@@ -76,7 +81,7 @@ function formSubmit(event) {
   for (const data of formData.entries()) {
     createRow(newTable, data);
     if (data[0] === 'begin-date' && !isValidDate(data[1])) {
-      divData.innerHTML = '';
+      resetForm();
       alert('Invalid date!');
     }
   }
@@ -84,7 +89,8 @@ function formSubmit(event) {
 
 function onLoad() {
   setStates();
-  form.addEventListener('submit', formSubmit)
+  form.addEventListener('submit', formSubmit);
+  buttonReset.addEventListener('click', resetForm);
 }
 
 window.onload = onLoad;
