@@ -41,3 +41,11 @@ button {
   border: 0;
   border-radius: 0.5em;
 }
+
+
+#data table {
+  margin-top: 1em;
+  border: 1px solid black;
+  border-collapse: separate;
+  border-spacing: 1em;
+}

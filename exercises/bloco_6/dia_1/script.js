@@ -1,8 +1,13 @@
 const ibgeURL = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
 
+const form = document.getElementById('curriculum-form');
 const selectState = document.getElementById('state');
+const divData = document.getElementById('data');
 
 const optionElement = document.createElement('option');
+const tableElement = document.createElement('table');
+const trElement = document.createElement('tr');
+const tdElement = document.createElement('td');
 
 async function fetchStates() {
   const response = await fetch(ibgeURL);
@@ -37,8 +42,33 @@ async function setStates() {
   }
 }
 
+function createRow(table, content) {
+  const newRow = trElement.cloneNode();
+
+  for (let index = 0; index < content.length; index += 1) {
+    const newData = tdElement.cloneNode();
+    newData.innerText = content[index];
+    newRow.appendChild(newData);
+  }
+
+  table.appendChild(newRow);
+}
+
+function formSubmit(event) {
+  event.preventDefault();
+
+  const newTable = tableElement.cloneNode();
+  divData.appendChild(newTable);
+
+  const formData = new FormData(form);
+  for (const data of formData.entries()) {
+    createRow(newTable, data);
+  }
+}
+
 function onLoad() {
   setStates();
+  form.addEventListener('submit', formSubmit)
 }
 
 window.onload = onLoad;
