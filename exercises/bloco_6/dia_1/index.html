@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curriculum Form</title>
+</head>
+<body>
+  <main>
+    <form action="#" method="POST">
+      <fieldset id="personal-data">
+        <label for="full-name">
+          Full Name:
+          <input name="full-name" id="full-name" type="text" maxlength="40" required>
+        </label>
+        <label for="email">
+          Email:
+          <input name="email" id="email" type="text" maxlength="50" required>
+        </label>
+        <label for="cpf">
+          CPF:
+          <input name="cpf" id="cpf" type="text" maxlength="11" required>
+        </label>
+        <label for="address">
+          Address:
+          <input name="address" id="address" type="text" maxlength="200" required>
+        </label>
+        <label for="city">
+          City:
+          <input name="city" id="city" type="text" maxlength="28" required>
+        </label>
+        <label for="state">
+          State:
+          <select name="state" id="state" required></select>
+        </label>
+        <p>Type:</p>
+        <label for="house">
+          <input name="type" id="house" type="radio" value="house" required>
+          House
+        </label>
+        <label for="apartment">
+          <input name="type" id="apartment" type="radio" value="apartment" required>
+          Apartment
+        </label>
+      </fieldset>
+    </form>
+  </main>
+</body>
+</html>
