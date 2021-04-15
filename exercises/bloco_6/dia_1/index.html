@@ -44,7 +44,28 @@
           Apartment
         </label>
       </fieldset>
+      <fieldset id="last-job">
+        <label for="summary">
+          Summary:
+          <textarea name="summary" id="summary" cols="30" rows="10" maxlength="1000" required></textarea>
+        </label>
+        <label for="role">
+          Role:
+          <input name="role" id="role" type="text" maxlength="40" required>
+        </label>
+        <label for="role-description">
+          Role Description:
+          <input name="role-description" id="role-description" type="text" maxlength="500" required>
+        </label>
+        <label for="begin-date">
+          Begin Date:
+          <input name="begin-date" id="begin-date" type="text" required>
+        </label>
+      </fieldset>
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
     </form>
+    <div id="data"></div>
   </main>
 </body>
 </html>
