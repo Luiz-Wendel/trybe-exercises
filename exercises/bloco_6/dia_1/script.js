@@ -54,8 +54,20 @@ function createRow(table, content) {
   table.appendChild(newRow);
 }
 
+function isValidDate(date) {
+  let [day, month, year] = date.split('/');
+
+  day = parseInt(day);
+  month = parseInt(month);
+  year = parseInt(year);
+
+  return day > 0 && day <=31 && month > 0 && month <= 12 && year > 0;
+}
+
 function formSubmit(event) {
   event.preventDefault();
+
+  divData.innerHTML = '';
 
   const newTable = tableElement.cloneNode();
   divData.appendChild(newTable);
@@ -63,6 +75,10 @@ function formSubmit(event) {
   const formData = new FormData(form);
   for (const data of formData.entries()) {
     createRow(newTable, data);
+    if (data[0] === 'begin-date' && !isValidDate(data[1])) {
+      divData.innerHTML = '';
+      alert('Invalid date!');
+    }
   }
 }
 
