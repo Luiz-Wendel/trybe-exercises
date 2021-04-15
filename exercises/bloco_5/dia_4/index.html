@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link id="googleFontLink" href="" rel="stylesheet">
+  <title>JavaScript - Web Storage</title>
+</head>
+<body>
+  <header id="header">
+    <div class="container">
+      <h4>Background Color</h4>
+      <div>
+        <input id="bgInput" type="text" placeholder="black">
+        <button id="bgBtn">Set</button>
+      </div>
+    </div>
+    <div class="container">
+      <h4>Text Color</h4>
+      <div>
+        <input id="txtColorInput" type="text" placeholder="white">
+        <button id="txtColorBtn">Set</button>
+      </div>
+    </div>
+    <div class="container">
+      <h4>Font Size</h4>
+      <div>
+        <input id="fontSizeInput" type="number" min="8" step="2" value="18">
+        <button id="fontSizeBtn">Set</button>
+      </div>
+    </div>
+    <div class="container">
+      <h4>Line Height</h4>
+      <div>
+        <input id="lineHeightInput" type="number" min="1" step="0.2" value="1">
+        <button id="lineHeightBtn">Set</button>
+      </div>
+    </div>
+    <div class="container">
+      <h4>Font Family</h4>
+      <div>
+        <input id="fontFamilyInput" type="text" placeholder="Roboto">
+        <button id="fontFamilyBtn">Set</button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <!--
+      HTML code got from Lipsum website.
+      Source: https://www.lipsum.com/
+    -->
+    <h1>Lorem Isum</h1>
+    <h4>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</h4>
+    <h5>"Niekam nepatinka skausmas jo paties labui, ir niekas jo neieško ar nenori jo turėti, tik todėl, kad tai skausmas..."</h5>
+    <hr>
+    <div id="Panes">
+      <div>
+        <h2>Kas yra Lorem Ipsum?</h2>
+        <p><strong>Lorem ipsum</strong> - tai fiktyvus tekstas naudojamas spaudos ir grafinio dizaino pasaulyje jau nuo XVI a. pradžios. Lorem Ipsum tapo standartiniu fiktyviu tekstu, kai nežinomas spaustuvininkas atsitiktine tvarka išdėliojo raides atspaudų prese ir tokiu būdu sukūrė raidžių egzempliorių. Šis tekstas išliko beveik nepasikeitęs ne tik penkis amžius, bet ir įžengė i kopiuterinio grafinio dizaino laikus. Jis išpopuliarėjo XX a. šeštajame dešimtmetyje, kai buvo išleisti Letraset lapai su Lorem Ipsum ištraukomis, o vėliau -leidybinė sistema AldusPageMaker, kurioje buvo ir Lorem Ipsum versija.</p>
+      </div>
+      <div>
+        <h2>Kam jis naudojamas?</h2>
+        <p>Jau seniai žinoma, kad vertinant dizainą ir kompoziciją, blaško skaitomas tekstas. Tad Lorem Ipsum naudojamas tam, kad daugiau ar mažiau normalizuotų raidžių paskirstymą vietoje paprasto dubliavimo: „Tekstas tekstas tekstas tekstas...“. Daugelis leidybinių sistemų programų, o taip pat ir Hiperteksto kalbos redaktoriai naudoja Lorem Ipsum kaip demonstracinę numatyto teksto versiją, todel žodžių „Lorem Ipsum“ internetinė paieška parodo daug tinklalapių kurie yra dar besikuriantys. Egzistuoja ne mažai įvairių Lorem Ipsum versijų. Kai kurios iš jų buvo sukurtos per klaidą, kitos - tyčia (pvz. jumoristinės).</p>
+      </div>
+      <div>
+        <h2>Iš kur jis atsirado?</h2>
+        <p>Daug kas galvoja, kad Lorem Ipsum - tai vien tik atsitiktinai surinktas tekstas, bet taip nėra. Jo šaknis galima rasti klasikiniame Lotynų kalba parašytame kūrinyje, išleistame 45 pr. m. e., t.y. prieš du tūkstančius metų. Richard McClintock, lotynų kalbos profesorius Hampden-Sydney (JAV) koledže, išrinko vieną iš neaiškesnių žodžių iš Lorem Ipsum ištraukos - „consectetur“, ir ėmėsi ieškoti jo klasikinėje lotynų kalbos literatūroje. Tokiu būdu jis rado neabejotiną šio žodžio ir Lorem Ipsum šaltinį knygos „de Finibus Bonorum et Malorum“ (Apie gėrio ir blogio ribas) 1.10.32 ir 1.10.33 pastraipose. Kūrinio autorius – Ciceronas, parašęs jį 45 pr. m. e. Šis etikos teorijos traktatas buvo labai populiarus Renesanso laikais. Pirmoji Lorem Ipsum teksto eilutė, „Lorem ipsum dolor sit amet..“ sukurta remiantis 1.10.32 pastraipa.</p>
+        <p>Klasikinį Lorem Ipsum teksto pavyzdį, naudojamą nuo XVI a., galima pamatyti svetainės apačioje. Taip pat pateikiamos 1.10.32 ir 1.10.33 pastraipos is Cicerono knygos „de Finibus Bonorum et Malorum“, ir jų vertimai į anglų kalbą H.Rackham 1914m.</p>
+      </div>
+      <div>
+        <h2>Kur jį gauti?</h2>
+        <p>Yra daug įvarių Lorem Ipsum variantų, bet daugelis jų buvo vienokiu ar kitokiu būdu modifikuoti, pvz. jumoristiniai intarpai arba žodžiai, nė kiek nepanasūs i lotynų kalbą. Jeigu Jums reikia Lorem Ipsum teksto rimtam projektui, Jūs tikriausiai nenorėtumėte viduryje eilutės kokio nors trikdančio išsireiškimo. Visi kiti Lorem Ipsum teksto eilučių generatoriai dažniausiai tik kartoja tą patį tekstą, kol užpildo reikiamus tarpus. Todėl čia siūlomas teksto eilučių generatorius yra vienintelis tikras Lorem Ipsum teksto generatorius. Jame naudojamas žodynas iš daugiau nei 200 lotynų kalbos žodžių, o taip pat keletas ištisų sakinių modelių. Taip surinktas Lorem Ipsum teksto variantas atrodo tikroviškai, nesikartoja, ir jame nėra „neįmanomų“ žodžių.</p>
+      </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

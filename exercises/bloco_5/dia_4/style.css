@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+}
+
+header {
+  background-color: inherit;
+  width: 100vw;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+main {
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main :is(h1, h2, h3, h4, h5, h6) {
+  margin: 10px 5px;
+}
+
+hr {
+  width: 80vw;
+}
+
+#Panes {
+  width: 80vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2vw;
+}
+
+#Panes div {
+  max-width: 39vw;
+}
+
+p {
+  text-align: justify;
+}
+
+.container {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container h4, .container div {
+  margin: 5px;
+}
