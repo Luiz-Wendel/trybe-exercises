@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <title>Curriculum Form</title>
+</head>
+<body class="bg-success">
+  <main class="container-fluid bg-light p-3 rounded col-sm-6">
+    <h1 class="text-center">Curriculum Form</h1>
+    <form class="needs-validation" id="curriculum-form" action="#" method="GET">
+      <fieldset class="mb-3" id="personal-data">
+        <label class="form-label" for="full-name">
+          Full Name:
+        </label>
+        <input class="form-control rounded-pill mb-3" name="full-name" id="full-name" type="text" maxlength="40" required>
+        <label class="form-label" for="email">
+          Email:
+        </label>
+        <input class="form-control rounded-pill mb-3" name="email" id="email" type="text" maxlength="50" required>
+        <label class="form-label" for="cpf">
+          CPF:
+        </label>
+        <input class="form-control rounded-pill mb-3" name="cpf" id="cpf" type="text" maxlength="11" required>
+        <label class="form-label" for="address">
+          Address:
+        </label>
+        <input class="form-control rounded-pill mb-3" name="address" id="address" type="text" maxlength="200" required>
+        <label class="form-label" for="city">
+          City:
+        </label>
+        <input class="form-control rounded-pill mb-3" name="city" id="city" type="text" maxlength="28" required>
+        <label class="form-label" for="state">
+          State:
+        </label>
+        <select class="form-select mb-3" name="state" id="state" required></select>
+        <p class="form-label">Type:</p>
+        <label class="form-check-label" for="house">
+          <input class="form-check-input" name="type" id="house" type="radio" value="house" required>
+          House
+        </label>
+        <label class="form-check-label" for="apartment">
+          <input class="form-check-input" name="type" id="apartment" type="radio" value="apartment" required>
+          Apartment
+        </label>
+      </fieldset>
+      <fieldset class="mb-3" id="last-job">
+        <label class="form-label" for="summary">
+          Summary:
+        </label>
+        <textarea class="form-control rounded mb-3" name="summary" id="summary" cols="30" rows="10" maxlength="1000" required></textarea>
+        <label class="form-label" for="role">
+          Role:
+        </label>
+        <input class="form-control rounded-pill mb-3" name="role" id="role" type="text" maxlength="40" required>
+        <label class="form-label" for="role-description">
+          Role Description:
+        </label>
+        <input class="form-control rounded-pill mb-3" name="role-description" id="role-description" type="text" maxlength="500" required>
+        <label class="form-label" for="begin-date">
+          Begin Date:
+        </label>
+        <input class="form-control rounded-pill mb-3" name="begin-date" id="begin-date" type="text" pattern="^(\d{2}\/\d{2}\/\d{4})$" required>
+      </fieldset>
+      <div class="d-flex justify-content-between">
+        <button class="btn btn-outline-success rounded-pill" type="submit">Submit</button>
+        <button class="btn btn-outline-danger rounded-pill" type="reset">Reset</button>
+      </div>
+    </form>
+    <div id="data"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
