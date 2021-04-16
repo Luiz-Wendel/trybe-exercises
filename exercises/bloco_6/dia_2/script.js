@@ -55,16 +55,6 @@ function createRow(table, content) {
   table.appendChild(newRow);
 }
 
-function isValidDate(date) {
-  let [day, month, year] = date.split('/');
-
-  day = parseInt(day);
-  month = parseInt(month);
-  year = parseInt(year);
-
-  return day > 0 && day <=31 && month > 0 && month <= 12 && year > 0;
-}
-
 function resetForm() {
   divData.innerHTML = '';
 }
@@ -78,13 +68,7 @@ function formSubmit(event) {
   divData.appendChild(newTable);
 
   const formData = new FormData(form);
-  for (const data of formData.entries()) {
-    createRow(newTable, data);
-    if (data[0] === 'begin-date' && !isValidDate(data[1])) {
-      resetForm();
-      alert('Invalid date!');
-    }
-  }
+  for (const data of formData.entries()) createRow(newTable, data);
 }
 
 function onLoad() {

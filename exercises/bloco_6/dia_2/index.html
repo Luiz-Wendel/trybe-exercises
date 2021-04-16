@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="node_modules/pikaday/css/pikaday.css">
   <title>Curriculum Form</title>
 </head>
 <body class="bg-success">
@@ -62,7 +63,7 @@
         <label class="form-label" for="begin-date">
           Begin Date:
         </label>
-        <input class="form-control rounded-pill mb-3" name="begin-date" id="begin-date" type="text" pattern="^(\d{2}\/\d{2}\/\d{4})$" required>
+        <input class="form-control rounded-pill mb-3" name="begin-date" id="datepicker" type="text" pattern="^(\d{2}\/\d{2}\/\d{4})$" autocomplete="off" required>
       </fieldset>
       <div class="d-flex justify-content-between">
         <button class="btn btn-outline-success rounded-pill" type="submit">Submit</button>
@@ -73,5 +74,19 @@
   </main>
 
   <script src="script.js"></script>
+  <script src="node_modules/pikaday/pikaday.js"></script>
+  <script src="node_modules/moment/moment.js"></script>
+  <script>
+    var picker = new Pikaday({
+      field: document.getElementById('datepicker'),
+      format: 'D/M/YYYY',
+      toString(date, format) {
+        const day = `0${date.getDate()}`.slice(-2);
+        const month = `0${date.getMonth() + 1}`.slice(-2);
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+      }
+    });
+  </script>
 </body>
 </html>
