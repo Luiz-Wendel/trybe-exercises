@@ -1,4 +1,5 @@
 const ibgeURL = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados';
+let isFormValid = true;
 
 const form = document.getElementById('curriculum-form');
 const selectState = document.getElementById('state');
@@ -59,16 +60,66 @@ function resetForm() {
   divData.innerHTML = '';
 }
 
+function validateForm() {
+  JustValidate('#curriculum-form', {
+    rules: {
+      'full-name': {
+        required: true,
+        maxLength: 40,
+      },
+      email: {
+        required: true,
+        maxLength: 50,
+      },
+      cpf: {
+        required: true,
+        maxLength: 11,
+      },
+      address: {
+        required: true,
+        maxLength: 200,
+      },
+      city: {
+        required: true,
+        maxLength: 28,
+      },
+      required: {
+        required: true,
+      },
+      summary: {
+        required: true,
+        maxLength: 1000,
+      },
+      role: {
+        required: true,
+        maxLength: 40,
+      },
+      'role-description': {
+        required: true,
+        maxLength: 500,
+      },
+    },
+    invalidFormCallback: (formErrors) => {
+      isFormValid = false;
+    }
+  });
+}
+
 function formSubmit(event) {
   event.preventDefault();
 
-  resetForm();
+  isFormValid = true;
+  validateForm();
 
-  const newTable = tableElement.cloneNode();
-  divData.appendChild(newTable);
+  if (isFormValid) {
+    resetForm();
 
-  const formData = new FormData(form);
-  for (const data of formData.entries()) createRow(newTable, data);
+    const newTable = tableElement.cloneNode();
+    divData.appendChild(newTable);
+
+    const formData = new FormData(form);
+    for (const data of formData.entries()) createRow(newTable, data);
+  }
 }
 
 function onLoad() {
