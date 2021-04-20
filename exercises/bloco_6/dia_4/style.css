@@ -64,7 +64,7 @@ body {
 }
 
 .card-container div {
-  flex-basis: 16%;
+  flex: 1 16%;
   align-items: center;
   background-color: #5C687C;
   border: black solid 1px;
