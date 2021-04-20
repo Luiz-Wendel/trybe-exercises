@@ -15,11 +15,13 @@ body {
 }
 
 .logo-container {
+  flex-basis: 268px;
   display: flex;
   justify-content: center;
 }
 
 .menu-container {
+  flex-basis: 500px;
   display: flex;
 }
 
