@@ -47,6 +47,7 @@ body {
 }
 
 .movie-container {
+  flex-basis: 700px;
   display: flex;
   flex-direction: column;
 }
@@ -63,6 +64,7 @@ body {
 }
 
 .card-container div {
+  flex-basis: 16%;
   align-items: center;
   background-color: #5C687C;
   border: black solid 1px;
