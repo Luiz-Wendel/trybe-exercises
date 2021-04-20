@@ -22,7 +22,7 @@ body {
 }
 
 .menu-container {
-  flex-basis: 500px;
+  flex: 1 500px;
   display: flex;
 }
 
