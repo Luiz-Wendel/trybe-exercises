@@ -5,3 +5,53 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+
+header, footer {
+  background-color: darkgray;
+}
+
+header {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  text-align: center;
+}
+
+header nav ul {
+  list-style: none;
+  display: none;
+}
+
+header nav ul li {
+  margin: 0 0.5em;
+}
+
+.container {
+  padding-top: 3em;
+}
+
+.container > * {
+  padding: 0 1em;
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+aside, article {
+  font-size: x-large;
+}
+
+article > h1 {
+  font-size: xx-large;
+}
+
+footer {
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
