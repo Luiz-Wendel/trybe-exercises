@@ -94,3 +94,37 @@
     float: none;
   }
 }
+
+@media screen and (max-width: 640px) {
+  img {
+    width: 100%;
+  }
+
+  #header {
+    position: fixed;
+    width: 100vw;
+  }
+
+  #aside {
+    display: none;
+  }
+
+  #content {
+    width: 96%;
+  }
+
+  #navigation {
+    width: calc(100% - 1em);
+    margin: 0.5em;
+    margin-top: calc(76px + 0.5em);
+  }
+
+  #navigation ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #navigation li a {
+    border: none;
+  }
+}
