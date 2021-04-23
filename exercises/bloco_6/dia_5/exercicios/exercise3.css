@@ -80,3 +80,17 @@
   padding: 20px;
   height: 1%;
 }
+
+@media only print {
+  #container {
+    padding: 1em;
+  }
+
+  #header, #navigation, #footer {
+    display: none;
+  }
+
+  #content, #content-container, #aside {
+    float: none;
+  }
+}
