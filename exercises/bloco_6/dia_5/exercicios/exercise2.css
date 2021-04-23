@@ -55,3 +55,14 @@ footer {
   align-items: center;
   text-align: center;
 }
+
+@media screen and (min-width: 600px) {
+  header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  header nav ul {
+    display: flex;
+  }
+}
