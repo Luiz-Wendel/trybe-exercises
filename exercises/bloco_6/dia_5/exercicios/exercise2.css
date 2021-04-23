@@ -48,6 +48,10 @@ article > h1 {
   font-size: xx-large;
 }
 
+article {
+  text-align: justify;
+}
+
 footer {
   font-size: large;
   display: flex;
@@ -64,5 +68,21 @@ footer {
 
   header nav ul {
     display: flex;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .aside-one, .aside-two {
+    display: inline-flex;
+    padding: 0;
+    width: calc(50% - 0.25em);
+  }
+
+  aside, article {
+    font-size: large;
+  }
+
+  article > h1 {
+    font-size: 2.5em;
   }
 }
