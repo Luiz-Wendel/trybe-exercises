@@ -26,4 +26,6 @@ const getKeys = (object) => Object.keys(object);
 
 const getObjectLength = (object) => Object.getOwnPropertyNames(object).length;
 
-console.log(getObjectLength(lesson2));
+const getValues = (object) => Object.values(object);
+
+console.log(getValues(lesson2));
