@@ -28,11 +28,7 @@ const getObjectLength = (object) => Object.getOwnPropertyNames(object).length;
 
 const getValues = (object) => Object.values(object);
 
-const allLessons = {
-  lesson1: Object.assign(lesson1),
-  lesson2: Object.assign(lesson2),
-  lesson3: Object.assign(lesson3),
-};
+const allLessons = Object.assign({}, {lesson1, lesson2, lesson3});
 
 const getTotalStudentsNumber = (object) => Object.keys(object).reduce((total, lesson) => total + object[lesson].numeroEstudantes, 0);
 
@@ -60,5 +56,3 @@ const createReport = (object, professor) => {
     estudantes,
   }
 }
-
-console.log(createReport(allLessons, 'Maria Clara'));
