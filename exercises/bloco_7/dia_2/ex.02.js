@@ -24,4 +24,6 @@ setNewAttribute(lesson2, 'turno', 'manhã');
 
 const getKeys = (object) => Object.keys(object);
 
-console.log(getKeys(lesson2));
+const getObjectLength = (object) => Object.getOwnPropertyNames(object).length;
+
+console.log(getObjectLength(lesson2));
