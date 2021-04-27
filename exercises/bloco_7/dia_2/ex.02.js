@@ -38,4 +38,6 @@ const getTotalStudentsNumber = (object) => Object.keys(object).reduce((total, le
 
 const getValueByNumber = (object, position) => Object.values(object)[position];
 
-console.log(getValueByNumber(lesson1, 0));
+const verifyPair = (object, key, value) => Object.keys(object).includes(key) && object[key] === value;
+
+console.log(verifyPair(lesson3, 'materia', 'Maria Clara'));
