@@ -17,3 +17,8 @@ const lesson3 = {
   professor: 'Maria Clara',
   turno: 'noite',
 };
+
+const setNewAttribute = (object, attribute, value) => object[attribute] = value;
+
+setNewAttribute(lesson2, 'turno', 'manhã');
+console.log(lesson2);
