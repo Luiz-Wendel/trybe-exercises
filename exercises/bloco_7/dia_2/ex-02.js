@@ -44,4 +44,21 @@ const getStudentsBySubject = (object, subject) => Object.keys(object).reduce((to
   object[lesson].materia === subject ? total + object[lesson].numeroEstudantes : total + 0
 ), 0);
 
-console.log(getStudentsBySubject(allLessons, 'Matemática'));
+const createReport = (object, professor) => {
+  const aulas = [];
+  const estudantes = Object.keys(object).reduce((total, lesson) => (
+    object[lesson].professor === professor ? total + object[lesson].numeroEstudantes : total + 0
+  ), 0);
+
+  Object.keys(object).forEach((key) => {
+    if (object[key].professor === professor) aulas.push(object[key].materia)
+  })
+
+  return {
+    professor,
+    aulas,
+    estudantes,
+  }
+}
+
+console.log(createReport(allLessons, 'Maria Clara'));
