@@ -29,3 +29,11 @@ const getObjectLength = (object) => Object.getOwnPropertyNames(object).length;
 const getValues = (object) => Object.values(object);
 
 console.log(getValues(lesson2));
+
+const allLessons = {
+  lesson1: Object.assign(lesson1),
+  lesson2: Object.assign(lesson2),
+  lesson3: Object.assign(lesson3),
+};
+
+console.log(allLessons);
