@@ -36,4 +36,6 @@ const allLessons = {
 
 const getTotalStudentsNumber = (object) => Object.keys(object).reduce((total, lesson) => total + object[lesson].numeroEstudantes, 0);
 
-console.log(getTotalStudentsNumber(allLessons));
+const getValueByNumber = (object, position) => Object.values(object)[position];
+
+console.log(getValueByNumber(lesson1, 0));
