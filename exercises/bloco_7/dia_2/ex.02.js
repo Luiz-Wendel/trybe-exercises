@@ -21,4 +21,7 @@ const lesson3 = {
 const setNewAttribute = (object, attribute, value) => object[attribute] = value;
 
 setNewAttribute(lesson2, 'turno', 'manhã');
-console.log(lesson2);
+
+const getKeys = (object) => Object.keys(object);
+
+console.log(getKeys(lesson2));
