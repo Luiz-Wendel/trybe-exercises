@@ -59,12 +59,12 @@ const getItems = (order) => {
 const getOrderPrice = (order) => {
   let orderPrice = 0;
 
-  for (const pizza of Object.keys(order.pizza)) {
-    orderPrice += order.pizza[pizza].price * order.pizza[pizza].amount;
-  }
-
-  for (const drink of Object.keys(order.drinks)) {
-    orderPrice += order.drinks[drink].price * order.drinks[drink].amount;
+  for (const itemType of Object.keys(order)) {
+    if (itemType !== 'delivery') {
+      for (const item of Object.keys(order[itemType])) {
+        orderPrice += order[itemType][item].price;
+      }
+    }
   }
 
   return orderPrice;
