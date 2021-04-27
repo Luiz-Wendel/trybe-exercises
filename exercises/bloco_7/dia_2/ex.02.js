@@ -34,14 +34,6 @@ const allLessons = {
   lesson3: Object.assign(lesson3),
 };
 
-const getTotalStudentsNumber = (object) => {
-  let total = 0;
-
-  for (const lesson of Object.keys(object)) {
-    total += object[lesson].numeroEstudantes;
-  }
-
-  return total;
-}
+const getTotalStudentsNumber = (object) => Object.keys(object).reduce((total, lesson) => total + object[lesson].numeroEstudantes, 0);
 
 console.log(getTotalStudentsNumber(allLessons));
