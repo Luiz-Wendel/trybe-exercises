@@ -1,6 +1,9 @@
+const assert = require('assert');
+
 const removeVowels = (word) => {
   const characters = word.split('');
   const results = [];
+  let counter = 0;
 
   for (let index = 0; index < characters.length; index += 1) {
     if (
@@ -10,14 +13,16 @@ const removeVowels = (word) => {
       characters[index] === 'e' ||
       characters[index] === 'u'
     ) {
-      results.push(characters[index]);
+      counter += 1;
+      results.push(counter);
     } else {
-      results.push('_');
+      results.push(characters[index]);
     }
   }
-  return results;
+  return results.join('');
 };
-
 
 const parameter = 'Dayane';
 const result = 'D1y2n3';
+
+assert.deepStrictEqual(removeVowels(parameter), result);
