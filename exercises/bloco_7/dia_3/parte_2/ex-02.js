@@ -1,5 +1,6 @@
 const assert = require('assert');
-// escreva a função wordLengths aqui
+
+const wordLengths = (array) => array.map((word) => word.length);
 
 const words = ['sun', 'potato', 'roundabout', 'pizza'];
 const expected = [3, 6, 10, 5];
