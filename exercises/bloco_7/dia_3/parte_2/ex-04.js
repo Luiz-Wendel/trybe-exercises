@@ -1,5 +1,6 @@
 const assert = require('assert');
-// escreva a função findTheNeedle aqui
+
+const findTheNeedle = (array, string) => array.indexOf(string);
 
 let words = ['house', 'train', 'slide', 'needle', 'book'];
 let expected = 3;
