@@ -1,12 +1,24 @@
 const assert = require('assert');
 
 function getChange(payable, paid) {
+  if (payable > paid) throw new Error('paid value is not enough');
+
+  if (payable === paid) return [];
+
   const coins = [200, 100, 50, 20, 10, 5, 2, 1];
   const change = [];
   const { length } = coins;
   let remaining = paid - payable;
 
-  // escreva seu código aqui...
+  while (remaining > 0) {
+    for (let index = 0; index < length; index += 1) {
+      if (remaining >= coins[index]) {
+        change.push(coins[index]);
+        remaining -= coins[index];
+        break;
+      }
+    }
+  }
 
   return change;
 }
