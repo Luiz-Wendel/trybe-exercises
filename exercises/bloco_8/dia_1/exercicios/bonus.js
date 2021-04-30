@@ -50,3 +50,7 @@ const mageAction = (mage) => {
     manaSpent: hasMana ? 15 : 0,
   }
 };
+
+const gameActions = {
+  // Crie as HOFs neste objeto.
+};
