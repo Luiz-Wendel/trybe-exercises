@@ -39,3 +39,5 @@ const getRandomInt = (min, max) => {
 const dragonMinDmg = 15;
 
 const dragonDmg = (dragon) => getRandomInt(dragonMinDmg, dragon.strength);
+
+const warriorDmg = (warrior) => getRandomInt(warrior.strength, warrior.strength * warrior.weaponDmg);
