@@ -93,7 +93,30 @@ const gameActions = {
   },
 };
 
-gameActions.warriorTurn(battleMembers.warrior, battleMembers.dragon, warriorDmg);
-gameActions.mageTurn(battleMembers.mage, battleMembers.dragon, mageAction);
-gameActions.dragonTurn(battleMembers.dragon, [battleMembers.warrior, battleMembers.mage], dragonDmg);
-gameActions.updateBattleMembers();
+let hasEnded = false;
+let turnCounter = 0;
+
+while (!hasEnded) {
+  turnCounter += 1;
+  if (battleMembers.warrior.healthPoints > 0)
+    gameActions.warriorTurn(battleMembers.warrior, battleMembers.dragon, warriorDmg);
+
+  if (battleMembers.mage.healthPoints > 0)
+    gameActions.mageTurn(battleMembers.mage, battleMembers.dragon, mageAction);
+
+  if (battleMembers.dragon.healthPoints > 0)
+    gameActions.dragonTurn(battleMembers.dragon, [battleMembers.warrior, battleMembers.mage], dragonDmg);
+
+  console.log(`Turn (${turnCounter}) result:`);
+  gameActions.updateBattleMembers();
+
+  if (battleMembers.warrior.healthPoints <= 0 && battleMembers.mage.healthPoints <= 0) {
+    console.log('Defeat! Dragon wins!');
+    hasEnded = true;
+  }
+
+  if (battleMembers.dragon.healthPoints <= 0) {
+    console.log('Victory! The dragon has been slain!');
+    hasEnded = true;
+  }
+}
