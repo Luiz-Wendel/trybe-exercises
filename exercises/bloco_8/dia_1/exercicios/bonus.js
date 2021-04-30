@@ -41,3 +41,12 @@ const dragonMinDmg = 15;
 const dragonDmg = (dragon) => getRandomInt(dragonMinDmg, dragon.strength);
 
 const warriorDmg = (warrior) => getRandomInt(warrior.strength, warrior.strength * warrior.weaponDmg);
+
+const mageAction = (mage) => {
+  const { mana, intelligence } = mage;
+  const hasMana = mana >= 15;
+  return {
+    dmgDelt: hasMana ? getRandomInt(intelligence, intelligence * 2) : 'Não possui mana suficiente!',
+    manaSpent: hasMana ? 15 : 0,
+  }
+};
