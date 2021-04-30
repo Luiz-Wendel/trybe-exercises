@@ -72,10 +72,17 @@ const mageAction = (mage) => {
 
 const gameActions = {
   warriorTurn: (warrior, target, getDmg) => {
-    const warriorDmg =getDmg(warrior)
+    const warriorDmg = getDmg(warrior);
     warrior.damage = warriorDmg;
     target.healthPoints -= warriorDmg;
+  },
+  mageTurn: (mage, target, getDmg) => {
+    const { dmgDelt, manaSpent } = getDmg(mage);
+    mage.damage = dmgDelt;
+    mage.mana -= manaSpent;
+    target.healthPoints -= typeof dmgDelt === 'number' ? dmgDelt : 0;
   },
 };
 
 gameActions.warriorTurn(battleMembers.warrior, battleMembers.dragon, warriorDmg);
+gameActions.mageTurn(battleMembers.mage, battleMembers.dragon, mageAction);
