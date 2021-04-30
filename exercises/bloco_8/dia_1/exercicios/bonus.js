@@ -82,7 +82,13 @@ const gameActions = {
     mage.mana -= manaSpent;
     target.healthPoints -= typeof dmgDelt === 'number' ? dmgDelt : 0;
   },
+  dragonTurn: (dragon, targets, getDmg) => {
+    const dragonDmg = getDmg(dragon);
+    dragon.damage = dragonDmg;
+    targets.forEach((target) => target.healthPoints -= dragonDmg);
+  },
 };
 
 gameActions.warriorTurn(battleMembers.warrior, battleMembers.dragon, warriorDmg);
 gameActions.mageTurn(battleMembers.mage, battleMembers.dragon, mageAction);
+gameActions.dragonTurn(battleMembers.dragon, [battleMembers.warrior, battleMembers.mage], dragonDmg);
