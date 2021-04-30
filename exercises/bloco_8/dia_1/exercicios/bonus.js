@@ -87,8 +87,13 @@ const gameActions = {
     dragon.damage = dragonDmg;
     targets.forEach((target) => target.healthPoints -= dragonDmg);
   },
+  updateBattleMembers: () => {
+    console.log(battleMembers);
+    return battleMembers;
+  },
 };
 
 gameActions.warriorTurn(battleMembers.warrior, battleMembers.dragon, warriorDmg);
 gameActions.mageTurn(battleMembers.mage, battleMembers.dragon, mageAction);
 gameActions.dragonTurn(battleMembers.dragon, [battleMembers.warrior, battleMembers.mage], dragonDmg);
+gameActions.updateBattleMembers();
