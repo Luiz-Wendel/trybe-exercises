@@ -29,3 +29,13 @@ const dragon = {
 };
 
 const battleMembers = { mage, warrior, dragon };
+
+const getRandomInt = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+};
+
+const dragonMinDmg = 15;
+
+const dragonDmg = (dragon) => getRandomInt(dragonMinDmg, dragon.strength);
