@@ -70,7 +70,7 @@ const authorUnique = () => {
 
   books.forEach((book) => birthYears.push(book.author.birthYear));
 
-  return birthYears.length === (new Set(birthYears)).length;
+  return birthYears.length === [...new Set(birthYears)].length;
 };
 
 assert.strictEqual(authorUnique(), expectedResult);
