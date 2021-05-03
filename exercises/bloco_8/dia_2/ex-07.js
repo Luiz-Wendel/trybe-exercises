@@ -68,9 +68,11 @@ const expectedResult = false;
 const authorUnique = () => {
   const birthYears = [];
 
-  books.forEach((book) => birthYears.push(book.author.birthYear));
+  return books.every((book) => {
+    const { birthYear } = book.author;
 
-  return birthYears.length === [...new Set(birthYears)].length;
+    return birthYears.includes(birthYear) ? false : birthYears.push(birthYear);
+  });
 };
 
 assert.strictEqual(authorUnique(), expectedResult);
