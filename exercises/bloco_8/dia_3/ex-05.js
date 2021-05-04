@@ -70,8 +70,11 @@ const expectedResult = [
   'J. R. R. Tolkien',
 ];
 
-function fantasyOrScienceFictionAuthors() {
-  // escreva seu código aqui
-}
+const genres = ['Fantasia', 'Ficção Científica'];
+
+const fantasyOrScienceFictionAuthors = () => books
+  .filter((book) => genres.includes(book.genre))
+  .map((book) => book.author.name)
+  .sort();
 
 assert.deepStrictEqual(fantasyOrScienceFictionAuthors(), expectedResult);
