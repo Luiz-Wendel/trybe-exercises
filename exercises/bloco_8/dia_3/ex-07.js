@@ -71,6 +71,8 @@ const authorWith3DotsOnName = () => {
   const filteredBooks = books.filter((book) => {
     const names = book.author.name.split('. ');
 
+    if (names.length < 4) return false;
+
     for (let index = 0; names.length > 0 && index < beginsWithInitials; index += 1) {
       if (names.shift().length !== 1) return false;
     }
