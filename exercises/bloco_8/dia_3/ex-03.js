@@ -106,7 +106,7 @@ const expectedResult = [
   },
 ];
 
-const genres = ['Fantasia', 'Ficção Científica']
+const genres = ['Fantasia', 'Ficção Científica'];
 
 const fantasyOrScienceFiction = () => books.filter((book) => genres.includes(book.genre));
 
