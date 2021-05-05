@@ -6,8 +6,9 @@ const names = [
   'Abeladerco', 'Adieidy', 'Alarucha',
 ];
 
-function containsA() {
-  // escreva seu código aqui
-}
+const containsA = () => names.reduce((acc, name) => {
+  const result = name.toLowerCase().split('a').length;
+  return result > 1 ? acc + result - 1 : acc;
+}, 0);
 
 assert.deepStrictEqual(containsA(), 20);
