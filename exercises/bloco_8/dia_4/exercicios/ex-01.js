@@ -6,8 +6,6 @@ const arrays = [
     [4, 5, 6],
 ];
 
-function flatten() {
-  // escreva seu código aqui
-}
+const flatten = () => arrays.reduce((acc, value) => [...acc, ...value]);
 
 assert.deepStrictEqual(flatten(), ['1', '2', '3', true, 4, 5, 6]);
