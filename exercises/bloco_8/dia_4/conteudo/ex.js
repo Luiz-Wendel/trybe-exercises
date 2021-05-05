@@ -1,3 +1,5 @@
+const assert = require('assert');
+
 const estudantes = [
   {
     nome: 'Jorge',
@@ -78,3 +80,22 @@ const estudantes = [
   para mostrar na tela um relatório que diz em qual matéria o estudante foi melhor.
   Você usará tanto o map quanto, dentro dele, o reduce!
 */
+
+const expected = [
+  { name: 'Jorge', materia: 'Português' },
+  { name: 'Mario', materia: 'Biologia' },
+  { name: 'Jorge', materia: 'Português' },
+  { name: 'Maria', materia: 'Química' },
+  { name: 'Natalia', materia: 'Português' },
+  { name: 'Wilson', materia: 'Português' },
+]
+
+const bestSubject = (students) => students
+  .map((student) => ({
+      name: student.nome,
+      materia: student.materias.reduce(
+          (score, subject) => subject.nota >= score.nota ? subject : score
+        ).name,
+  }));
+
+assert.deepStrictEqual(bestSubject(estudantes), expected);
