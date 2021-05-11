@@ -30,3 +30,4 @@ setTimeout(() => console.log(planetDistanceFromSun(venus)), 3000); // B
 setTimeout(() => console.log(planetDistanceFromSun(jupiter)), 2000); // C
 
 // Agora, dado o código abaixo, qual a ordem de finalização de execução das linhas comentadas?
+// A, C e B
