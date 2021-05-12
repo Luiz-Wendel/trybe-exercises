@@ -13,9 +13,9 @@ const promise = new Promise((resolve, reject) => {
   const sum = array.reduce((acc, number) => acc + number);
 
   if (sum < 8000) {
-    return resolve('Promise resolved');
+    return resolve(sum);
   }
   reject('Promise rejected');
 })
-.then((response) => console.log(response))
+.then((sum) => [sum / 2, sum / 3, sum / 5, sum / 10])
 .catch((error) => console.log(error));
