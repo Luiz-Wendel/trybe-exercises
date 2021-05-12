@@ -11,3 +11,20 @@
 
   Tente usar Higher Order Functions! Lembre-se de que tanto uma quanto a outra recebem, como parâmetro, funções!
 */
+
+const promise = new Promise((resolve, reject) => {
+  const array = [];
+
+  for (let index = 0; index < 10; index += 1) {
+    array.push(Math.round(Math.random() * 50) ** 2);
+  }
+
+  const sum = array.reduce((acc, number) => acc + number);
+
+  if (sum < 8000) {
+    return resolve('Promise resolved');
+  }
+  reject('Promise rejected');
+})
+.then((response) => console.log(response))
+.catch((error) => console.log(error));
