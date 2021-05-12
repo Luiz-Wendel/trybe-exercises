@@ -18,4 +18,5 @@ const promise = new Promise((resolve, reject) => {
   reject();
 })
 .then((sum) => [sum / 2, sum / 3, sum / 5, sum / 10])
+.then((divisions) => divisions.reduce((acc, number) => acc + number))
 .catch(() => console.log('É mais de oito mil! Essa promise deve estar quebrada!'));
