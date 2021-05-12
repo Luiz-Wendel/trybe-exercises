@@ -4,7 +4,7 @@
   Refatore a Promise para utilizar somente async e await .
 */
 
-const promise = new Promise((resolve, reject) => {
+const getSum = () => {
   const array = [];
 
   for (let index = 0; index < 10; index += 1) {
@@ -13,11 +13,25 @@ const promise = new Promise((resolve, reject) => {
 
   const sum = array.reduce((acc, number) => acc + number);
 
-  if (sum < 8000) {
-    return resolve(sum);
+  if (sum < 8000) return sum
+  else throw new Error();
+};
+
+const getDivisions = (sum) => [2, 3, 5, 10].map((factor) => sum / factor);;
+
+const getDivisionsSum = (array) => array.reduce((acc, number) => acc + number);
+
+const promise = async () => {
+  try {
+    const sum = getSum();
+    console.log(`Sum: ${sum}`);
+    const divisions = getDivisions(sum);
+    console.log(`Divisions: ${divisions}`);
+    const divisionsSum = getDivisionsSum(divisions);
+    console.log(`Divisions sum: ${divisionsSum}`);
+  } catch {
+    console.log('É mais de oito mil! Essa promise deve estar quebrada!')
   }
-  reject();
-})
-.then((sum) => [sum / 2, sum / 3, sum / 5, sum / 10])
-.then((divisions) => divisions.reduce((acc, number) => acc + number))
-.catch(() => console.log('É mais de oito mil! Essa promise deve estar quebrada!'));
+};
+
+promise();
