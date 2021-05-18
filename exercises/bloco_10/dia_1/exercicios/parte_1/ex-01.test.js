@@ -5,11 +5,11 @@ describe('Testing Sum function', () => {
     expect(typeof sum).toBe('function');
   });
 
-  it('should return 9 if 4 and 5 is passed', () => {
+  it('should return 9 if 4 and 5 are passed', () => {
     expect(sum(4, 5)).toBe(9);
   });
 
-  it('should return 0 if 0 and 0 is passed', () => {
+  it('should return 0 if 0 and 0 are passed', () => {
     expect(sum(0, 0)).toBe(0);
   });
 
