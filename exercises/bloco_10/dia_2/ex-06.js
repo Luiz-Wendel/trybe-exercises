@@ -12,8 +12,20 @@ const findAnimalByName = (name) => {
   });
 };
 
-const getAnimal = (name) => {
+const getAnimalByName = (name) => {
   return findAnimalByName(name);
 };
 
-module.exports = getAnimal;
+const findAnimalByAge = (age) => {
+  return new Promise((resolve, reject) => {
+    const foundAnimal = Animals.filter((animal) => animal.age === age);
+  
+    return foundAnimal.length > 0 ? resolve(foundAnimal) : reject('Nenhum animal com essa idade!');
+  });
+};
+
+const getAnimalByAge = (age) => {
+  return findAnimalByAge(age);
+};
+
+module.exports = { getAnimalByName, getAnimalByAge };
