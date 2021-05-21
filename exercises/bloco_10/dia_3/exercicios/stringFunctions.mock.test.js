@@ -2,7 +2,7 @@ const stringFunctions = require('./stringFunctions');
 
 jest.mock('./stringFunctions')
 
-describe('#stringFunctions', () => {
+describe('#stringFunctions with mock', () => {
   describe('uppercase mock', () => {
     it('should return string in lowercase when mocked #ex.04', () => {
       stringFunctions.uppercase.mockImplementation((string) => string.toLowerCase());
