@@ -1,30 +1,33 @@
 import React from 'react';
 import axios from 'axios';
 
+const initialState = {
+  nome: '',
+  email: '',
+  cpf: '',
+  endereco: '',
+  cidade: '',
+  estado: '',
+  tipo: '',
+  resumo: '',
+  cargo: '',
+  descricao: '',
+  estados: [],
+  count: 0,
+};
+
 class Form extends React.Component {
   constructor() {
     super()
 
-    this.state={
-      nome: '',
-      email: '',
-      cpf: '',
-      endereco: '',
-      cidade: '',
-      estado: '',
-      tipo: '',
-      resumo: '',
-      cargo: '',
-      descricao: '',
-      estados: [],
-      count: 0,
-    }
+    this.state={...initialState}
 
     this.handleChange = this.handleChange.bind(this);
     this.setStates = this.setStates.bind(this);
     this.clearIfStartsWithNumber = this.clearIfStartsWithNumber.bind(this);
     this.displayAlert = this.displayAlert.bind(this);
     this.createCV = this.createCV.bind(this);
+    this.resetState = this.resetState.bind(this);
   }
 
   handleChange({ target }) {
@@ -75,6 +78,9 @@ class Form extends React.Component {
   }
 
   createCV() {
+    const pastDiv = document.querySelector('#cvDiv');
+    if (pastDiv) pastDiv.remove();
+
     const { estados, count, ...data} = this.state;
 
     const form = document.querySelector('form');
@@ -89,6 +95,15 @@ class Form extends React.Component {
     })
 
     form.appendChild(div);
+  }
+
+  resetState() {
+    const div = document.querySelector('#cvDiv');
+    if (div) div.remove();
+
+    this.setState({
+      ...initialState,
+    })
   }
 
   componentDidMount() {
@@ -242,6 +257,7 @@ class Form extends React.Component {
           </label>
         </fieldset>
         <button type="button" onClick={ this.createCV }>Enviar</button>
+        <button type="button" onClick={ this.resetState }>Resetar</button>
       </form>
     );
   }
