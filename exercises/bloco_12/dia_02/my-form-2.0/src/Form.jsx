@@ -13,12 +13,17 @@ class Form extends React.Component {
       cidade: '',
       estado: '',
       tipo: '',
+      resumo: '',
+      cargo: '',
+      descricao: '',
       estados: [],
+      count: 0,
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.setStates = this.setStates.bind(this);
     this.clearIfStartsWithNumber = this.clearIfStartsWithNumber.bind(this);
+    this.displayAlert = this.displayAlert.bind(this);
   }
 
   handleChange({ target }) {
@@ -38,6 +43,18 @@ class Form extends React.Component {
     this.setState({
       [name]: value.match(/^[\d]/g) ? '' : value,
     });
+  }
+
+  displayAlert() {
+    const { count } = this.state;
+
+    if (count === 0) {
+      alert('Preencha com cuidado esta informação.');
+  
+      this.setState({
+        count: 1,
+      });
+    }
   }
 
   async setStates() {
@@ -61,46 +78,138 @@ class Form extends React.Component {
   }
 
   render() {
-    const { nome, email, cpf, endereco, cidade, estado, estados } = this.state;
+    const { nome, email, cpf, endereco, cidade, estado, estados, resumo, cargo, descricao } = this.state;
 
     return (
       <form>
         <fieldset>
           <label>
             Nome:
-            <input name="nome" type="text" maxLength="40" value={ nome } onChange={ this.handleChange } required />
+            <input
+              name="nome"
+              type="text"
+              maxLength="40"
+              value={ nome }
+              onChange={ this.handleChange }
+              required
+            />
           </label>
           <label>
             Email:
-            <input name="email" type="text" maxLength="50" value={ email } onChange={ this.handleChange } required />
+            <input
+              name="email"
+              type="text"
+              maxLength="50"
+              value={ email }
+              onChange={ this.handleChange }
+              required
+            />
           </label>
           <label>
             CPF:
-            <input name="cpf" type="text" maxLength="11" value={ cpf } onChange={ this.handleChange } required />
+            <input
+              name="cpf"
+              type="text"
+              maxLength="11"
+              value={ cpf }
+              onChange={ this.handleChange }
+              required
+            />
           </label>
           <label>
             Endereço:
-            <input name="endereco" type="text" maxLength="200" value={ endereco } onChange={ this.handleChange } required />
+            <input
+              name="endereco"
+              type="text"
+              maxLength="200"
+              value={ endereco }
+              onChange={ this.handleChange }
+              required
+            />
           </label>
           <label>
             Cidade:
-            <input name="cidade" type="text" maxLength="28" value={ cidade } onChange={ this.handleChange } onBlur={ this.clearIfStartsWithNumber } required />
+            <input
+              name="cidade"
+              type="text"
+              maxLength="28"
+              value={ cidade }
+              onChange={ this.handleChange }
+              onBlur={ this.clearIfStartsWithNumber }
+              required
+            />
           </label>
           <label>
             Estado:
             <select name="estado" value={ estado } onChange={ this.handleChange } required>
               <option value="">Selecione...</option>
-              { estados.map(({ sigla, nome }) => <option key={ sigla } value={ sigla }>{ nome }</option>) }
+              {
+                estados.map(({ sigla, nome }) => (
+                  <option key={ sigla } value={ sigla }>{ nome }</option>
+                ))
+              }
             </select>
           </label>
           <label>Tipo:</label>
           <label>
             Casa
-            <input name="tipo" type="radio" maxLength="40" value="casa" onChange={ this.handleChange } required />
+            <input
+              name="tipo"
+              type="radio"
+              maxLength="40"
+              value="casa"
+              onChange={ this.handleChange }
+              required
+            />
           </label>
           <label>
             Apartamento
-            <input name="tipo" type="radio" maxLength="40" value="apartamento" onChange={ this.handleChange } required />
+            <input
+              name="tipo"
+              type="radio"
+              maxLength="40"
+              value="apartamento"
+              onChange={ this.handleChange }
+              required
+            />
+          </label>
+        </fieldset>
+        <fieldset>
+          <label>
+            Resumo do currículo:
+            <textarea
+              name="resumo"
+              cols="30"
+              rows="10"
+              maxLength="1000"
+              value={ resumo }
+              onChange={ this.handleChange }
+              required
+            />
+          </label>
+          <label>
+            Cargo:
+            <textarea
+              name="cargo"
+              cols="30"
+              rows="10"
+              maxLength="40"
+              value={ cargo }
+              onChange={ this.handleChange }
+              onMouseEnter={ this.displayAlert } 
+              required
+            />
+          </label>
+          <label>
+            Descrição do cargo:
+            <input
+              name="descricao"
+              type="text"
+              maxLength="500"
+              value={ descricao }
+              onChange={ this.handleChange }
+              required
+            />
           </label>
         </fieldset>
       </form>
