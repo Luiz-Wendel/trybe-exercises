@@ -24,6 +24,7 @@ class Form extends React.Component {
     this.setStates = this.setStates.bind(this);
     this.clearIfStartsWithNumber = this.clearIfStartsWithNumber.bind(this);
     this.displayAlert = this.displayAlert.bind(this);
+    this.createCV = this.createCV.bind(this);
   }
 
   handleChange({ target }) {
@@ -73,12 +74,40 @@ class Form extends React.Component {
       .then((data) => data);
   }
 
+  createCV() {
+    const { estados, count, ...data} = this.state;
+
+    const form = document.querySelector('form');
+
+    const div = document.createElement('div');
+    div.id = 'cvDiv';
+
+    Object.entries(data).forEach(([key, value]) => {
+      const newDiv = document.createElement('p');
+      newDiv.innerText = `${key}: ${value}`;
+      div.appendChild(newDiv);
+    })
+
+    form.appendChild(div);
+  }
+
   componentDidMount() {
     this.setStates();
   }
 
   render() {
-    const { nome, email, cpf, endereco, cidade, estado, estados, resumo, cargo, descricao } = this.state;
+    const {
+      nome,
+      email,
+      cpf,
+      endereco,
+      cidade,
+      estado,
+      estados,
+      resumo,
+      cargo,
+      descricao
+    } = this.state;
 
     return (
       <form>
@@ -145,7 +174,7 @@ class Form extends React.Component {
               <option value="">Selecione...</option>
               {
                 estados.map(({ sigla, nome }) => (
-                  <option key={ sigla } value={ sigla }>{ nome }</option>
+                  <option key={ sigla } value={ nome }>{ nome }</option>
                 ))
               }
             </select>
@@ -212,6 +241,7 @@ class Form extends React.Component {
             />
           </label>
         </fieldset>
+        <button type="button" onClick={ this.createCV }>Enviar</button>
       </form>
     );
   }
