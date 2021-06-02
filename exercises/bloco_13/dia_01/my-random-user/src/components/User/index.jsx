@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './style.module.css';
 
 class User extends React.Component {
   constructor() {
@@ -8,6 +9,8 @@ class User extends React.Component {
       loading: true,
       user: {},
     };
+
+    this.fetchUser = this.fetchUser.bind(this);
   }
 
   async fetchUser() {
@@ -27,13 +30,22 @@ class User extends React.Component {
   }
 
   render() {
-    const { loading } = this.state;
+    const { loading, user } = this.state;
 
     const loadingElement = <span>Loading...</span>
 
     return (
       <>
-        { loading ? loadingElement : <h1>Fetched</h1>}
+        {
+          loading ? loadingElement : (
+              <div className={ style.card }>
+                <img src={ user.picture.thumbnail } alt="User" />
+                <h1>{ user.name.first }</h1>
+                <p>{ user.email }</p>
+                <p>{ user.dob.age }</p>
+              </div>
+            )
+        }
       </>
     );
   }
