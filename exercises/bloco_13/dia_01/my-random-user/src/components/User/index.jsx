@@ -29,6 +29,12 @@ class User extends React.Component {
     this.fetchUser();
   }
 
+  shouldComponentUpdate(_nextProps, nextState) {
+    if (nextState.user.dob.age > 50) return false;
+
+    return true;
+  }
+
   render() {
     const { loading, user } = this.state;
 
