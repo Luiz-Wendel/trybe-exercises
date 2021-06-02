@@ -5,6 +5,7 @@ class User extends React.Component {
     super();
 
     this.state = {
+      loading: true,
       user: {},
     };
   }
@@ -16,6 +17,7 @@ class User extends React.Component {
     const user = data.results[0];
 
     this.setState({
+      loading: false,
       user,
     });
   }
@@ -25,7 +27,15 @@ class User extends React.Component {
   }
 
   render() {
-    return <div />;
+    const { loading } = this.state;
+
+    const loadingElement = <span>Loading...</span>
+
+    return (
+      <>
+        { loading ? loadingElement : <h1>Fetched</h1>}
+      </>
+    );
   }
 }
 
