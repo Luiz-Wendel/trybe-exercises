@@ -12,17 +12,19 @@
     <form>
       <label>
         Increment by:
-        <input id="increment-input" type="number">
+        <input id="increment-input" type="number" value="1" min="1">
       </label>
       <label>
         decrement by:
-        <input id="decrement-input" type="number">
+        <input id="decrement-input" type="number" value="1" min="1">
       </label>
     </form>
 
     <p id="counter">Counter: 0</p>
     <button id="decrement">-</button>
     <button id="increment">+</button>
+
+    <p id="click-counter">Clicks: 0</p>
   </main>
 
   <script>
@@ -35,12 +37,14 @@
       counter: 0,
       incrementValue: 1,
       decrementValue: 1,
+      clickCount: 0,
     };
 
     const handleCounter = (state, value) => {
       return {
         ...state,
         counter: state.counter + value,
+        clickCount: state.clickCount + 1,
       };
     };
 
@@ -96,10 +100,12 @@
     );
 
     const counterElement = document.getElementById('counter');
+    const clickCounterElement = document.getElementById('click-counter');
 
     store.subscribe(() => {
-      const { counter } = store.getState();
+      const { counter, clickCount } = store.getState();
       counterElement.innerText = `Counter: ${counter}`;
+      clickCounterElement.innerText = `Clicks: ${clickCount}`;
     });
   </script>
 </body>
