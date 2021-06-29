@@ -9,6 +9,17 @@
 </head>
 <body>
   <main>
+    <form>
+      <label>
+        Increment by:
+        <input id="increment-input" type="number">
+      </label>
+      <label>
+        decrement by:
+        <input id="decrement-input" type="number">
+      </label>
+    </form>
+
     <p id="counter">Counter: 0</p>
     <button id="decrement">-</button>
     <button id="increment">+</button>
@@ -17,13 +28,18 @@
   <script>
     const INCREMENT = 'INCREMENT';
     const DECREMENT = 'DECREMENT';
+    const INCREMENT_VALUE = 'INCREMENT_VALUE';
+    const DECREMENT_VALUE = 'DECREMENT_VALUE';
 
     const initialState = {
       counter: 0,
+      incrementValue: 1,
+      decrementValue: 1,
     };
 
     const handleCounter = (state, value) => {
       return {
+        ...state,
         counter: state.counter + value,
       };
     };
@@ -31,9 +47,13 @@
     const reducer = (state = { ...initialState }, action) => {
       switch (action.type) {
         case INCREMENT:
-          return handleCounter(state, 1);
+          return handleCounter(state, state.incrementValue);
         case DECREMENT:
-          return handleCounter(state, -1);
+          return handleCounter(state, -state.decrementValue);
+        case INCREMENT_VALUE:
+          return { ...state, incrementValue: action.value };
+        case DECREMENT_VALUE:
+          return { ...state, decrementValue: action.value };
         default:
           return state;
       }
@@ -53,6 +73,27 @@
 
     incrementBtn.addEventListener('click', () => store.dispatch(incrementAction()));
     decrementBtn.addEventListener('click', () => store.dispatch(decrementAction()));
+
+    const incrementInput = document.getElementById('increment-input');
+    const decrementInput = document.getElementById('decrement-input');
+
+    const incrementValueAction = (value) => ({
+      type: INCREMENT_VALUE,
+      value,
+    });
+    const decrementValueAction = (value) => ({
+      type: DECREMENT_VALUE,
+      value,
+    });
+
+    incrementInput.addEventListener(
+      'change',
+      ({ target }) => store.dispatch(incrementValueAction(parseInt(target.value, 10))),
+    );
+    decrementInput.addEventListener(
+      'change',
+      ({ target }) => store.dispatch(decrementValueAction(parseInt(target.value, 10))),
+    );
 
     const counterElement = document.getElementById('counter');
 
