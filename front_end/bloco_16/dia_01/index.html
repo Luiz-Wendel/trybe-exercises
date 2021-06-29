@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.1.0/redux.min.js"></script>
+  <title>Exercício - Redux</title>
+</head>
+<body>
+  <main>
+    <p id="counter">Counter: 0</p>
+    <button id="decrement">-</button>
+    <button id="increment">+</button>
+  </main>
+
+  <script>
+    const INCREMENT = 'INCREMENT';
+    const DECREMENT = 'DECREMENT';
+
+    const initialState = {
+      counter: 0,
+    };
+
+    const handleCounter = (state, value) => {
+      return {
+        counter: state.counter + value,
+      };
+    };
+
+    const reducer = (state = { ...initialState }, action) => {
+      switch (action.type) {
+        case INCREMENT:
+          return handleCounter(state, 1);
+        case DECREMENT:
+          return handleCounter(state, -1);
+        default:
+          return state;
+      }
+    }
+
+    const store = Redux.createStore(reducer);
+
+    const incrementBtn = document.getElementById('increment');
+    const decrementBtn = document.getElementById('decrement');
+
+    const incrementAction = () => ({
+      type: INCREMENT,
+    });
+    const decrementAction = () => ({
+      type: DECREMENT,
+    });
+
+    incrementBtn.addEventListener('click', () => store.dispatch(incrementAction()));
+    decrementBtn.addEventListener('click', () => store.dispatch(decrementAction()));
+
+    const counterElement = document.getElementById('counter');
+
+    store.subscribe(() => {
+      const { counter } = store.getState();
+      counterElement.innerText = `Counter: ${counter}`;
+    });
+  </script>
+</body>
+</html>
