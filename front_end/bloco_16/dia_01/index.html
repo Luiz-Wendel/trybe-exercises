@@ -25,6 +25,7 @@
     <button id="increment">+</button>
 
     <p id="click-counter">Clicks: 0</p>
+    <p id="values">Values: []</p>
   </main>
 
   <script>
@@ -38,6 +39,7 @@
       incrementValue: 1,
       decrementValue: 1,
       clickCount: 0,
+      values: [],
     };
 
     const handleCounter = (state, value) => {
@@ -45,6 +47,7 @@
         ...state,
         counter: state.counter + value,
         clickCount: state.clickCount + 1,
+        values: [...state.values, value],
       };
     };
 
@@ -101,11 +104,13 @@
 
     const counterElement = document.getElementById('counter');
     const clickCounterElement = document.getElementById('click-counter');
+    const valuesElement = document.getElementById('values');
 
     store.subscribe(() => {
-      const { counter, clickCount } = store.getState();
+      const { counter, clickCount, values } = store.getState();
       counterElement.innerText = `Counter: ${counter}`;
       clickCounterElement.innerText = `Clicks: ${clickCount}`;
+      valuesElement.innerText = `Values: [${values.join(', ')}]`;
     });
   </script>
 </body>
