@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.1.0/redux.min.js"></script>
+  <title>Exercício - Redux</title>
+</head>
+<body>
+  <main>
+    <form>
+      <label>
+        Increment by:
+        <input id="increment-input" type="number" value="1" min="1">
+      </label>
+      <label>
+        decrement by:
+        <input id="decrement-input" type="number" value="1" min="1">
+      </label>
+    </form>
+
+    <p id="counter">Counter: 0</p>
+    <button id="decrement">-</button>
+    <button id="increment">+</button>
+
+    <p id="click-counter">Clicks: 0</p>
+    <p id="values">Values: []</p>
+  </main>
+
+  <script>
+    const INCREMENT = 'INCREMENT';
+    const DECREMENT = 'DECREMENT';
+    const INCREMENT_VALUE = 'INCREMENT_VALUE';
+    const DECREMENT_VALUE = 'DECREMENT_VALUE';
+
+    const initialState = {
+      counter: 0,
+      incrementValue: 1,
+      decrementValue: 1,
+      clickCount: 0,
+      values: [],
+    };
+
+    const handleCounter = (state, value) => {
+      return {
+        ...state,
+        counter: state.counter + value,
+        clickCount: state.clickCount + 1,
+        values: [...state.values, value],
+      };
+    };
+
+    const reducer = (state = { ...initialState }, action) => {
+      switch (action.type) {
+        case INCREMENT:
+          return handleCounter(state, state.incrementValue);
+        case DECREMENT:
+          return handleCounter(state, -state.decrementValue);
+        case INCREMENT_VALUE:
+          return { ...state, incrementValue: action.value };
+        case DECREMENT_VALUE:
+          return { ...state, decrementValue: action.value };
+        default:
+          return state;
+      }
+    }
+
+    const store = Redux.createStore(
+      reducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    );
+
+    const incrementBtn = document.getElementById('increment');
+    const decrementBtn = document.getElementById('decrement');
+
+    const incrementAction = () => ({
+      type: INCREMENT,
+    });
+    const decrementAction = () => ({
+      type: DECREMENT,
+    });
+
+    incrementBtn.addEventListener('click', () => store.dispatch(incrementAction()));
+    decrementBtn.addEventListener('click', () => store.dispatch(decrementAction()));
+
+    const incrementInput = document.getElementById('increment-input');
+    const decrementInput = document.getElementById('decrement-input');
+
+    const incrementValueAction = (value) => ({
+      type: INCREMENT_VALUE,
+      value,
+    });
+    const decrementValueAction = (value) => ({
+      type: DECREMENT_VALUE,
+      value,
+    });
+
+    incrementInput.addEventListener(
+      'change',
+      ({ target }) => store.dispatch(incrementValueAction(parseInt(target.value, 10))),
+    );
+    decrementInput.addEventListener(
+      'change',
+      ({ target }) => store.dispatch(decrementValueAction(parseInt(target.value, 10))),
+    );
+
+    const counterElement = document.getElementById('counter');
+    const clickCounterElement = document.getElementById('click-counter');
+    const valuesElement = document.getElementById('values');
+
+    store.subscribe(() => {
+      const { counter, clickCount, values } = store.getState();
+      counterElement.innerText = `Counter: ${counter}`;
+      clickCounterElement.innerText = `Clicks: ${clickCount}`;
+      valuesElement.innerText = `Values: [${values.join(', ')}]`;
+    });
+  </script>
+</body>
+</html>
