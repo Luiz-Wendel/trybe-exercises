@@ -80,3 +80,8 @@ DELETE FROM Movies
 UPDATE BoxOffice
 	SET rating = 9.0
 	WHERE domestic_sales > 400000000;
+
+-- Ex. 09
+UPDATE BoxOffice
+	SET rating = 6.0
+	WHERE domestic_sales > 200000000 AND international_sales < 300000000;
