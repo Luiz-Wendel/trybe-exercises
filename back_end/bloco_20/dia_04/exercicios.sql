@@ -57,3 +57,9 @@ UPDATE Movies
 	SET title = 'Ratatouille',
 		year = 2007
 	WHERE title = 'ratatui';
+
+-- Ex. 05
+INSERT INTO BoxOffice(movie_id, rating, domestic_sales, international_sales)
+	VALUES ((SELECT id FROM Movies WHERE title = 'Monstros SA'), 8.5, 300000000, 250000000),
+		   ((SELECT id FROM Movies WHERE title = 'Os Incríveis'), 7.4, 460000000, 510000000),
+		   ((SELECT id FROM Movies WHERE title = 'WALL-E'), 9.9, 290000000, 280000000);
