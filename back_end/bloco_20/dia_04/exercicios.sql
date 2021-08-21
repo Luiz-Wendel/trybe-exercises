@@ -46,3 +46,8 @@ INSERT INTO Movies(title, director, year, length_minutes)
 -- Ex. 02
 INSERT INTO BoxOffice(movie_id, rating, domestic_sales, international_sales)
 	VALUES ((SELECT id FROM Movies WHERE title = 'Procurando Nemo'), 6.8, 450000000, 370000000);
+
+-- Ex. 03
+UPDATE Movies
+	SET director = 'Andrew Staton'
+    WHERE title = 'Procurando Nemo';
