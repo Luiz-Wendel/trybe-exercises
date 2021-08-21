@@ -51,3 +51,9 @@ INSERT INTO BoxOffice(movie_id, rating, domestic_sales, international_sales)
 UPDATE Movies
 	SET director = 'Andrew Staton'
     WHERE title = 'Procurando Nemo';
+
+-- Ex. 04
+UPDATE Movies
+	SET title = 'Ratatouille',
+		year = 2007
+	WHERE title = 'ratatui';
