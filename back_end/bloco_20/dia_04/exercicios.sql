@@ -63,3 +63,9 @@ INSERT INTO BoxOffice(movie_id, rating, domestic_sales, international_sales)
 	VALUES ((SELECT id FROM Movies WHERE title = 'Monstros SA'), 8.5, 300000000, 250000000),
 		   ((SELECT id FROM Movies WHERE title = 'Os Incríveis'), 7.4, 460000000, 510000000),
 		   ((SELECT id FROM Movies WHERE title = 'WALL-E'), 9.9, 290000000, 280000000);
+
+-- Ex. 06
+DELETE FROM BoxOffice
+	WHERE movie_id = (SELECT id FROM Movies WHERE title = 'WALL-E');
+DELETE FROM Movies
+	WHERE title = 'WALL-E';
