@@ -75,3 +75,8 @@ DELETE FROM BoxOffice
 	WHERE movie_id IN (SELECT id FROM Movies WHERE director = 'Andrew Staton');
 DELETE FROM Movies
 	WHERE director = 'Andrew Staton';
+
+-- Ex. 08
+UPDATE BoxOffice
+	SET rating = 9.0
+	WHERE domestic_sales > 400000000;
