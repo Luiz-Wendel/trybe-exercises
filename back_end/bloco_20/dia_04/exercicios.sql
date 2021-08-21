@@ -69,3 +69,9 @@ DELETE FROM BoxOffice
 	WHERE movie_id = (SELECT id FROM Movies WHERE title = 'WALL-E');
 DELETE FROM Movies
 	WHERE title = 'WALL-E';
+
+-- Ex. 07
+DELETE FROM BoxOffice
+	WHERE movie_id IN (SELECT id FROM Movies WHERE director = 'Andrew Staton');
+DELETE FROM Movies
+	WHERE director = 'Andrew Staton';
