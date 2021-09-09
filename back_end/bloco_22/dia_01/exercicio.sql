@@ -1,0 +1,39 @@
+DROP DATABASE IF EXISTS ZOO;
+CREATE DATABASE ZOO;
+
+USE ZOO;
+
+CREATE TABLE Specie(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  `name` VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Animal(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  `name` VARCHAR(50) NOT NULL,
+  specie_id INT NOT NULL,
+  sex CHAR(1) NOT NULL,
+  age TINYINT NOT NULL,
+  location VARCHAR(50) NOT NULL,
+  FOREIGN KEY (specie_id) REFERENCES Specie (id)
+);
+
+CREATE TABLE Manager(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  `name` VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE Caretaker(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  `name` VARCHAR(50) NOT NULL,
+  manager_id INT NOT NULL,
+  FOREIGN KEY (manager_id) REFERENCES Manager (id)
+);
+
+CREATE TABLE Animal_Caretaker(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  caretaker_id INT NOT NULL,
+  animal_id INT NOT NULL,
+  FOREIGN KEY (caretaker_id) REFERENCES Caretaker (id),
+  FOREIGN KEY (animal_id) REFERENCES Animal (id)
+);
