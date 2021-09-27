@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "imc": "node ./imc.js"
+    "imc": "node ./imc.js",
+    "velocity": "node ./velocity.js"
   },
   "keywords": [],
   "author": "LW",
