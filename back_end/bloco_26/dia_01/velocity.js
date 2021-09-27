@@ -1,7 +1,7 @@
-var readlineSync = require('readline-sync');
+const readlineSync = require('readline-sync');
 
-var userDistance = readlineSync.question('What\'s the distance?');
-var userSpeed = readlineSync.question('What\'s the speed?');
+const userDistance = readlineSync.question('What\'s the distance?');
+const userSpeed = readlineSync.question('What\'s the speed?');
 
 const velocity = (distance, speed) => {
   console.log(distance / speed);

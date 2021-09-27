@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "imc": "node ./imc.js",
-    "velocity": "node ./velocity.js"
+    "velocity": "node ./velocity.js",
+    "draw": "node ./draw.js"
   },
   "keywords": [],
   "author": "LW",
