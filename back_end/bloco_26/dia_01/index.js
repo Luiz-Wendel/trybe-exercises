@@ -1,7 +1,7 @@
 const readlineSync = require('readline-sync');
 var exec = require('child_process').exec;
 
-const scriptOptions = ['imc', 'velocity', 'draw', 'factorial'];
+const scriptOptions = ['imc', 'velocity', 'draw', 'factorial', 'fibonacci'];
 const userPick = readlineSync.keyInSelect(scriptOptions, 'Which script?');
 
 if (userPick >= 0) {
