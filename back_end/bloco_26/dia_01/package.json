@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "script": "node ./index.js",
     "imc": "node ./imc.js",
     "velocity": "node ./velocity.js",
     "draw": "node ./draw.js"
