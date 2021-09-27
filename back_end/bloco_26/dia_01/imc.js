@@ -4,4 +4,4 @@ const imc = (weight = 80, height = 190) => {
   return weight / (heightInMeters ** 2);
 };
 
-module.exports = imc;
+console.log(imc());
