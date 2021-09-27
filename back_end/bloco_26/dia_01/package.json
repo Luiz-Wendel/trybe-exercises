@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "script": "node ./index.js",
-    "imc": "node ./imc.js",
-    "velocity": "node ./velocity.js",
-    "draw": "node ./draw.js"
+    "script": "node ./index",
+    "imc": "node ./imc",
+    "velocity": "node ./velocity",
+    "draw": "node ./draw",
+    "factorial": "node ./factorial"
   },
   "keywords": [],
   "author": "LW",
