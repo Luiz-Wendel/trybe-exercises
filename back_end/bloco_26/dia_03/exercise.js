@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const numberType = (number) => {
   if (typeof number !== 'number') throw new Error('Parameter must be a number!');
 
@@ -8,4 +10,14 @@ const numberType = (number) => {
   return 'neutral';
 };
 
-module.exports = numberType;
+const writeToFile = (fileName, content) => {
+  if (typeof fileName !== 'string' || typeof content !== 'string') {
+    throw new Error('Parameters must be strings!');
+  }
+
+  fs.writeFileSync(`./${fileName}`, content);
+
+  return 'ok';
+};
+
+module.exports = { numberType, writeToFile };

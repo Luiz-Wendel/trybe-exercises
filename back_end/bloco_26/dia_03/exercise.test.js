@@ -1,6 +1,6 @@
 const { expect } = require("chai");
 
-const numberType = require('./exercise');
+const { numberType, writeToFile } = require('./exercise');
 
 const positive = 'positive';
 const negative = 'negative';
