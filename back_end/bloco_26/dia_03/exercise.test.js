@@ -11,7 +11,7 @@ describe('numberType function', () => {
   });
 
   it('should return a string', () => {
-    expect(numberType()).to.be.a('string');
+    expect(numberType(Math.random())).to.be.a('string');
   });
 
   it('should return "positive" if number is greater than 0', () => {
@@ -26,5 +26,13 @@ describe('numberType function', () => {
 
   it('should return "neutral" if number is 0', () => {
     expect(numberType(0)).to.be.equal('neutral');
+  });
+
+  it('should throw an Error if parameter is not a number', () => {
+    expect(() => numberType('xablau')).to.throw();
+  });
+
+  it('should throw an Error if parameter is not a number', () => {
+    expect(() => numberType('xablau')).to.throw(Error, 'Parameter must be a number!');
   });
 });
