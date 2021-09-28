@@ -1,0 +1,19 @@
+{
+  "name": "my-scripts",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "script": "node ./index",
+    "imc": "node ./imc",
+    "velocity": "node ./velocity",
+    "draw": "node ./draw",
+    "factorial": "node ./factorial",
+    "fibonacci": "node ./fibonacci"
+  },
+  "keywords": [],
+  "author": "LW",
+  "license": "ISC",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
