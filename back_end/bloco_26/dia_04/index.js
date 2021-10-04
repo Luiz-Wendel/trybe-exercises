@@ -1,5 +1,6 @@
 const express = require('express');
 const colors = require('colors');
+const fs = require('fs');
 
 const app = express();
 
@@ -27,6 +28,16 @@ app.put('/users/:name/:age', (req, res) => {
   const jsonResponse = { message: `Seu nome é ${name} e você tem ${age} anos de idade` };
 
   return res.status(200).json(jsonResponse);
+});
+
+app.get('/simpsons', (_req, res) => {
+  try {
+    const fileContent = JSON.parse(fs.readFileSync('./simpsons.json', 'utf-8'));
+
+    return res.status(200).send(fileContent);
+  } catch (error) {
+    return res.status(500).json({ error: `${error}` });
+  }
 });
 
 app.listen(3000, () => {
