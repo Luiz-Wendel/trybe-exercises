@@ -40,6 +40,22 @@ app.get('/simpsons', (_req, res) => {
   }
 });
 
+app.get('/simpsons/:id', (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const fileContent = JSON.parse(fs.readFileSync('./simpsons.json', 'utf-8'));
+
+    const foundSimpson = fileContent.find((simpson) => simpson.id === id);
+
+    if (foundSimpson) return res.status(200).send(foundSimpson);
+
+    return res.status(404).json({ message: 'Simpson not found!' });
+  } catch (error) {
+    return res.status(500).json({ error: `${error}` });
+  }
+});
+
 app.listen(3000, () => {
   console.log(`App running on ${colors.cyan('port 3000')}...`);
 });
