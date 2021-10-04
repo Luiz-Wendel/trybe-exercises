@@ -1,6 +1,7 @@
 const express = require('express');
 const colors = require('colors');
 const fs = require('fs');
+const crypto = require('crypto');
 
 const app = express();
 
@@ -86,6 +87,20 @@ app.get('/simpsons/:id', (req, res) => {
   } catch (error) {
     return res.status(500).json({ error: `${error}` });
   }
+});
+
+const generateToken = () => crypto.randomBytes(8).toString('hex');
+
+app.post('/signup', (req, res) => {
+  const { email, password, firstName, phone } = req.body;
+
+  if (!email || !password || !firstName || !phone) {
+    return res.status(401).json({ message: 'Missing fields!' });
+  }
+
+  const token = generateToken();
+
+  return res.status(200).json({ token });
 });
 
 app.listen(3000, () => {
