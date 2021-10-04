@@ -40,6 +40,26 @@ app.get('/simpsons', (_req, res) => {
   }
 });
 
+app.post('/simpsons', (req, res) => {
+  const { id, name } = req.body;
+
+  try {
+    const fileContent = JSON.parse(fs.readFileSync('./simpsons.json', 'utf-8'));
+
+    if (fileContent.some((simpson) => Number(simpson.id) === id)) {
+      return res.status(409).json({ message: 'Id already exists!' });
+    }
+
+    const updatedFileContent = [...fileContent, { id, name }];
+
+    fs.writeFileSync('./simpsons.json', JSON.stringify(updatedFileContent));
+
+    return res.status(204).end();
+  } catch (error) {
+    return res.status(500).json({ error: `${error}` });
+  }
+});
+
 app.get('/simpsons/:id', (req, res) => {
   const { id } = req.params;
 
