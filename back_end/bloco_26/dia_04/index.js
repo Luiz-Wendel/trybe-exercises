@@ -4,7 +4,19 @@ const fs = require('fs');
 
 const app = express();
 
-app.use(express.json());
+const tokenLength = 16;
+
+const authMiddleware = (req, res, next) => {
+  const { authorization } = req.headers;
+
+  if (!authorization || authorization.length !== tokenLength) {
+    return res.status(401).json({ message: 'Token inválido!' });
+  }
+
+  next();
+};
+
+app.use(express.json(), authMiddleware);
 
 app.get('/ping', (_req, res) => res.status(200).json({ message: 'pong' }));
 
