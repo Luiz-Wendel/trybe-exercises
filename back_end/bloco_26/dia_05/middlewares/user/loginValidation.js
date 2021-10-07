@@ -1,10 +1,9 @@
-const isValidEmail = require('../../helpers/isValidEmail');
-const isValidPassword = require('../../helpers/isValidPassword');
+const { isValid } = require('../../helpers/utils');
 
 const loginValidation = (req, res, next) => {
   const { email, password } = req.body;
 
-  return isValidEmail(email) && isValidPassword(password)
+  return isValid('email', email) && isValid('password', password)
     ? next()
     : res.status(400).json({ message: "Email or password is incorrect!" });
 };

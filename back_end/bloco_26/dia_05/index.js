@@ -4,6 +4,8 @@ const colors = require('colors');
 const userRouter = require('./routes/userRouter');
 const btcRouter = require('./routes/btcRouter');
 const postsRouter = require('./routes/postsRouter');
+const teamsRouter = require('./routes/teamsRouter');
+
 const error = require('./middlewares/error');
 
 const app = express();
@@ -13,6 +15,7 @@ app.use(express.json());
 app.use('/user', userRouter);
 app.use('/btc', btcRouter);
 app.use('/posts', postsRouter);
+app.use('/teams', teamsRouter);
 
 app.use('*', (_req, _res, next) => next({ statusCode: 404, message: 'Route not found!' }));
 app.use(error);
