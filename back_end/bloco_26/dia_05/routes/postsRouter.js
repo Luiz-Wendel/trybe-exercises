@@ -18,4 +18,6 @@ postsRouter.get('/:id', (req, res) => {
   return res.status(200).json(post);
 });
 
+postsRouter.get('/', (_req, res) => res.status(200).json(posts));
+
 module.exports = postsRouter;
