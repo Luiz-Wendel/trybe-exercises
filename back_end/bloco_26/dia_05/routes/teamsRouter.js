@@ -23,4 +23,16 @@ teamsRouter.post('/', newTeamValidator, (req, res) => {
   }
 });
 
+teamsRouter.get('/', (_req, res) => {
+  try {
+    const path = './teams.js';
+
+    const teams = fs.existsSync(path) ? JSON.parse(fs.readFileSync(path, 'utf-8')) : [];
+
+    return res.status(200).json(teams);
+  } catch (error) {
+    return res.status(500).json(error);
+  }
+});
+
 module.exports = teamsRouter;
