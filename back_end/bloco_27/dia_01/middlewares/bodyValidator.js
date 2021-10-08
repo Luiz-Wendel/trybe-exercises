@@ -1,7 +1,7 @@
 const { isValid, getValidationMessage } = require('../helpers/utils');
 
 const requiredFields = {
-  '/users/': ['firstName', 'lastName', 'email', 'password'],
+  '/users': ['firstName', 'lastName', 'email', 'password'],
 };
 
 const bodyValidator = (req, res, next) => {
@@ -9,7 +9,7 @@ const bodyValidator = (req, res, next) => {
   const bodyEntries = Object.entries(body);
   const bodyKeys = Object.keys(body);
 
-  const bodyContainsAllRequiredFields = requiredFields[req.originalUrl]
+  const bodyContainsAllRequiredFields = requiredFields[req.baseUrl]
     .every((field) => bodyKeys.includes(field));
 
   if (!bodyContainsAllRequiredFields) {

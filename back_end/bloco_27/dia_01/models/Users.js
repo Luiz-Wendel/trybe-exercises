@@ -26,4 +26,16 @@ const getById = async (id) => {
     .then((db) => db.collection('users').findOne(new ObjectId(id)));
 };
 
-module.exports = { create, getAll, getById };
+const updateOneById = async (id, newValues) => {
+  return connection()
+    .then((db) => db.collection('users').updateOne(
+      {
+        _id: new ObjectId(id),
+      },
+      {
+        $set: { ...newValues },
+      },
+    ));
+};
+
+module.exports = { create, getAll, getById, updateOneById };

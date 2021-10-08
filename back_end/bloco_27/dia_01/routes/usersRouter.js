@@ -42,4 +42,20 @@ userRouter.get('/:id', async (req, res) => {
   }
 });
 
+userRouter.put('/:id', bodyValidator, async (req, res) => {
+  const { id } = req.params;
+  const { firstName, lastName, email, password } = req.body;
+  const updatedValues = { firstName, lastName, email, password };
+
+  const user = await Users.getById(id);
+
+  if (!user) return res.status(404).json({ error: true, message: 'User not found!' });
+
+  const result = await Users.updateOneById(id, updatedValues);
+
+  return result.modifiedCount
+    ? res.status(200).json({ id, ...updatedValues })
+    : res.status(400).json({ message: 'No changed values!' });
+});
+
 module.exports = userRouter;
