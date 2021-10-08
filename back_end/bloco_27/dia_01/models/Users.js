@@ -14,4 +14,10 @@ const create = async (userObject) => {
     .then((result) => getNewUser({ id: result.insertedId, ...userObject }));
 };
 
-module.exports = { create };
+const getAll = async () => {
+  return connection()
+    .then((db) => db.collection('users').find().toArray())
+    .then((users) => users);
+};
+
+module.exports = { create, getAll };
