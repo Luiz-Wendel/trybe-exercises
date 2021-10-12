@@ -19,4 +19,19 @@ module.exports = {
 
     return res.status(200).json({ ...foundCep });
   },
+
+  post: async (req, res) => {
+    const { validCep } = req;
+
+    const created = await Ceps.create(validCep);
+
+    if (created.error) return res.status(409).json({
+      error: {
+        code: 'alreadyExists',
+        message: 'CEP já existente!',
+      },
+    });
+
+    return res.status(201).json({ ...validCep });
+  },
 };
