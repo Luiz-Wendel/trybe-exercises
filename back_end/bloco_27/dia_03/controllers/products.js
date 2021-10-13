@@ -1,5 +1,8 @@
 const express = require('express');
-const Products = require('../models/Products');
+
+const { DB_SOFTWARE } = process.env;
+
+const Products = require(`../models/${DB_SOFTWARE}/Products`);
 
 const router = express.Router();
 
