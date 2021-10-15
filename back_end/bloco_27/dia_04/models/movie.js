@@ -20,10 +20,19 @@ const findOne = async (id) => {
   const moviesCollection = await mongoConnection.getConnection()
     .then((db) => db.collection('movies'));
 
-  const movie = moviesCollection
+  const movie = await moviesCollection
     .findOne(new ObjectId(id));
 
-  return movie;
+  if (!movie) return movie;
+
+  const { title, directedBy, releaseYear } = movie;
+
+  return {
+    id,
+    title,
+    directedBy,
+    releaseYear
+  };
 };
 
 const create = async ({ title, directedBy, releaseYear }) => {

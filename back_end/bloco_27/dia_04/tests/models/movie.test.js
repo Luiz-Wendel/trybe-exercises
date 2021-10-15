@@ -203,17 +203,17 @@ describe('Testa o model Movie', () => {
         expect(movie).not.to.be.empty;
       });
 
-      it('o objeto possui os atributos "_id", "title", "directedBy", "releaseYear"', async () => {
+      it('o objeto possui os atributos "id", "title", "directedBy", "releaseYear"', async () => {
         const movie = await MoviesModel.findOne(createdId);
 
         expect(Object.keys(movie)).to.have.lengthOf(4);
-        expect(movie).to.include.all.keys(['_id', 'title', 'directedBy', 'releaseYear']);
+        expect(movie).to.include.all.keys(['id', 'title', 'directedBy', 'releaseYear']);
       });
 
       it('o objeto retornado é um filme cadastrado', async () => {
         const movie = await MoviesModel.findOne(createdId);
 
-        expect(movie).to.deep.equal({ _id: createdId, ...expectedMovie});
+        expect(movie).to.deep.equal({ id: createdId, ...expectedMovie});
       });
     });
   });
