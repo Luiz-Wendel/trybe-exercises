@@ -156,6 +156,14 @@ describe('Testa o model Movie', () => {
       mongoConnection.getConnection.restore();
     });
 
+    describe('Quando não é passado o ID do filme', () => {
+      it('retorna null', async () => {
+        const movie = await MoviesModel.findOne();
+
+        expect(movie).to.be.null;
+      });
+    });
+
     describe('Quando não existe o filme', () => {
       const invalidId = '61609852e58392e54f6c4e4c';
 
