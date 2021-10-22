@@ -1,12 +1,14 @@
 const express = require('express');
 
-const MovieController = require('./controllers/movieController');
+const MovieController = require('./controllers/movie');
 
 const app = express();
 
 app.use(express.json());
 
 app.get('/movies', MovieController.getAll);
+
+app.get('/movies/:id', MovieController.findOne);
 
 app.post('/movies', MovieController.create);
 
