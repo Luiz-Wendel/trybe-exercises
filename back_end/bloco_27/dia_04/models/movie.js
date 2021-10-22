@@ -50,8 +50,18 @@ const create = async ({ title, directedBy, releaseYear }) => {
   };
 };
 
+const remove = async (id) => {
+  const moviesCollection = await mongoConnection.getConnection()
+    .then((db) => db.collection('movies'));
+
+  const { deletedCount } = await moviesCollection.deleteOne({ _id: new ObjectId(id) });
+
+  return deletedCount;
+};
+
 module.exports = {
   create,
   getAll,
   findOne,
+  remove,
 };

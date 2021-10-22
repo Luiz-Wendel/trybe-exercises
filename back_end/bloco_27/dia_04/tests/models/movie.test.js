@@ -217,4 +217,65 @@ describe('Testa o model Movie', () => {
       });
     });
   });
+
+  describe('Exclusão de um filme', () => {
+    const DBServer = new MongoMemoryServer();
+    let connectionMock;
+
+    before(async () => {
+      const URLMock = await DBServer.getUri();  
+      connectionMock = await MongoClient.connect(URLMock, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      })
+      .then((conn) => conn.db('model_example'));
+
+      sinon.stub(mongoConnection, 'getConnection').resolves(connectionMock);
+    });
+
+    after(() => {
+      mongoConnection.getConnection.restore();
+    });
+
+    describe('Quando exclui com sucesso', () => {
+      const expectedMovie = {
+        title: 'Example Movie',
+        directedBy: 'Jane Dow',
+        releaseYear: 1999,
+      };
+      let createdId;
+
+      beforeEach(async () => {
+        const { insertedId } = await connectionMock.collection('movies').insertOne({ ...expectedMovie });
+        createdId = insertedId;
+      });
+
+      afterEach(async () => {
+        await connectionMock.collection('movies').drop();
+      });
+
+      it('retorna um número', async () => {
+        const movie = await MoviesModel.remove(createdId);
+
+        expect(movie).to.be.a('number');
+      });
+
+      it('retorn 1', async () => {
+        const movie = await MoviesModel.remove(createdId);
+
+        expect(movie).to.be.equal(1);
+      });
+
+      it('o filme não deve existir no bd', async () => {
+        const movieBeforeDeletion = await connectionMock.collection('movies')
+          .findOne({ _id: createdId });
+        await MoviesModel.remove(createdId);
+        const movieAfterDeletion = await connectionMock.collection('movies')
+          .findOne({ _id: createdId });
+
+        expect(movieBeforeDeletion).to.be.deep.equal({ _id: createdId, ...expectedMovie });
+        expect(movieAfterDeletion).to.be.null;
+      });
+    });
+  });
 });
