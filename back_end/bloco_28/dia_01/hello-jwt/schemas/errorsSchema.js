@@ -11,4 +11,10 @@ module.exports = {
       message: 'Restricted access',
     },
   },
+  users: {
+    already_exists: {
+      statusCode: 409,
+      message: 'User already exists',
+    },
+  },
 };
