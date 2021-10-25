@@ -1,24 +1,37 @@
+const fs = require('fs');
 const jwt = require('jsonwebtoken');
-
-const isAdmin = ({ username, password }) => username === 'admin' && password === 's3nh4S3gur4???';
 
 module.exports = (req, res) => {
   const { username, password } = req.body;
-  const { JWT_SECRET: secret } = process.env;
+  const path = 'models/data/users.json';
 
-  const jwtConfig = {
-    expiresIn: '1h',
-    algorithm: 'HS256',
-  };
+  try {
+    if (fs.existsSync(path)) {
+      users = JSON.parse(fs.readFileSync(path, 'utf-8'));
 
-  const jwtPayload = {
-    username,
-    admin: false,
-  };
+      const user = users.find(({ username: existingUsername }) => existingUsername === username);
 
-  if (isAdmin({ username, password })) jwtPayload.admin = true;
+      if (user && user.password === password) {
+        const { JWT_SECRET: secret } = process.env;
 
-  const token = jwt.sign(jwtPayload, secret, jwtConfig);
+        const jwtConfig = {
+          expiresIn: '1h',
+          algorithm: 'HS256',
+        };
 
-  return res.status(200).json({ token });
+        const jwtPayload = {
+          username: user.username,
+          admin: user.admin,
+        };
+
+        const token = jwt.sign(jwtPayload, secret, jwtConfig);
+
+        return res.status(200).json({ token });
+      }
+    }
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+
+  return res.status(404).json({ message: 'User not found' });
 };
