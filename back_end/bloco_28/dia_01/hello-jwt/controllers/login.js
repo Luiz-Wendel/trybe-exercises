@@ -1,7 +1,9 @@
 const jwt = require('jsonwebtoken');
 
+const isAdmin = ({ username, password }) => username === 'admin' && password === 's3nh4S3gur4???';
+
 module.exports = (req, res) => {
-  const { username } = req.body;
+  const { username, password } = req.body;
   const { JWT_SECRET: secret } = process.env;
 
   const jwtConfig = {
@@ -13,6 +15,8 @@ module.exports = (req, res) => {
     username,
     admin: false,
   };
+
+  if (isAdmin({ username, password })) jwtPayload.admin = true;
 
   const token = jwt.sign(jwtPayload, secret, jwtConfig);
 
