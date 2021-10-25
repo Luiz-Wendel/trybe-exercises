@@ -47,8 +47,21 @@ const create = async ({ title, directedBy, releaseYear }) => {
   };
 };
 
+const remove = async (id) => {
+  const movie = await findOne(id);
+
+  if (!movie) return false;
+
+  const deleted = await MoviesModel.remove(id);
+
+  if (deleted) return movie;
+
+  return false;
+};
+
 module.exports = {
   create,
   getAll,
   findOne,
+  remove,
 };

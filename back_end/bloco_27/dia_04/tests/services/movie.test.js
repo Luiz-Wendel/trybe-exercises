@@ -124,6 +124,14 @@ describe('Testa o service Movie', () => {
 
   describe('Busca os detalhes de um filme no BD', () => {
     describe('quando o ID é inválido', () => {
+      const requests = [
+        MoviesService.findOne(),
+        MoviesService.findOne(158),
+        MoviesService.findOne(['teste']),
+        MoviesService.findOne({ teste: 'teste' }),
+        MoviesService.findOne('604cb554311d68f491ba'),
+      ];
+
       before(() => {
         sinon.stub(MoviesModel, 'findOne')
           .resolves(null);
@@ -134,14 +142,6 @@ describe('Testa o service Movie', () => {
       });
 
       it('retorna um booleano', async () => {
-        const requests = [
-          MoviesService.findOne(),
-          MoviesService.findOne(158),
-          MoviesService.findOne(['teste']),
-          MoviesService.findOne({ teste: 'teste' }),
-          MoviesService.findOne('604cb554311d68f491ba'),
-        ];
-
         const responses = await Promise.all(requests);
 
         responses.forEach((response) => {
@@ -150,14 +150,6 @@ describe('Testa o service Movie', () => {
       });
 
       it('retorna false', async () => {
-        const requests = [
-          MoviesService.findOne(),
-          MoviesService.findOne(158),
-          MoviesService.findOne(['teste']),
-          MoviesService.findOne({ teste: 'teste' }),
-          MoviesService.findOne('604cb554311d68f491ba'),
-        ];
-
         const responses = await Promise.all(requests);
 
         responses.forEach((response) => {
@@ -223,6 +215,92 @@ describe('Testa o service Movie', () => {
 
       it('o objeto retornado é um filme cadastrado', async () => {
         const movie = await MoviesService.findOne(expectedMovie.id);
+
+        expect(movie).to.deep.equal(expectedMovie);
+      });
+    });
+  });
+
+  describe('Remove um filme no BD', () => {
+    describe('quando o ID é inválido', () => {
+      let requests;
+
+      before(() => {
+        sinon.stub(MoviesModel, 'findOne')
+          .resolves(null);
+
+        requests = [
+          MoviesService.remove(),
+          MoviesService.remove(158),
+          MoviesService.remove(['teste']),
+          MoviesService.remove({ teste: 'teste' }),
+          MoviesService.remove('604cb554311d68f491ba'),
+          MoviesService.remove('604cb554311d68f491ba5789'),
+        ];
+      });
+
+      after(() => {
+        MoviesModel.findOne.restore();
+      });
+
+      it('retorna um booleano', async () => {
+        const responses = await Promise.all(requests);
+
+        responses.forEach((response) => {
+          expect(response).to.be.a('boolean');
+        });
+      });
+
+      it('retorna false', async () => {
+        const responses = await Promise.all(requests);
+
+        responses.forEach((response) => {
+          expect(response).to.be.false;
+        });
+      });
+    });
+
+    describe('quando existe o filme', () => {
+      const expectedMovie = {
+        id: '604cb554311d68f491ba5781',
+        title: 'Example Movie',
+        directedBy: 'Jane Dow',
+        releaseYear: 1999,
+      };
+
+      before(() => {
+        sinon.stub(MoviesModel, 'findOne')
+          .resolves(expectedMovie);
+        sinon.stub(MoviesModel, 'remove')
+          .resolves(1);
+      });
+
+      after(() => {
+        MoviesModel.findOne.restore();
+        MoviesModel.remove.restore();
+      });
+
+      it('retorna um objeto', async () => {
+        const response = await MoviesService.remove(expectedMovie.id);
+
+        expect(response).to.be.an('object');
+      });
+
+      it('o objeto não pode estar vazio', async () => {
+        const movie = await MoviesService.remove(expectedMovie.id);
+
+        expect(movie).not.to.be.empty;
+      });
+
+      it('o objeto possui os atributos "id", "title", "directedBy", "releaseYear"', async () => {
+        const movie = await MoviesService.remove(expectedMovie.id);
+
+        expect(Object.keys(movie)).to.have.lengthOf(4);
+        expect(movie).to.include.all.keys(['id', 'title', 'directedBy', 'releaseYear']);
+      });
+
+      it('o objeto retornado é o filme que foi removido', async () => {
+        const movie = await MoviesService.remove(expectedMovie.id);
 
         expect(movie).to.deep.equal(expectedMovie);
       });
