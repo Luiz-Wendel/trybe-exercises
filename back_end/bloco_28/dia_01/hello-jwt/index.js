@@ -27,6 +27,8 @@ app.post('/login', middlewares.loginValidator, controllers.login);
 
 app.get('/users/me', middlewares.jwtAuth, controllers.me);
 
+app.get('/top-secret', middlewares.jwtAuth, middlewares.isAdmin, controllers.topSecret);
+
 app.use(middlewares.error);
 
 app.listen(PORT, () => {
