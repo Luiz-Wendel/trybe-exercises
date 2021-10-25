@@ -33,8 +33,20 @@ const create = async (req, res) => {
     .json({ message: 'Filme criado com sucesso!' });
 };
 
+const remove = async (req, res) => {
+  const { id } = req.params;
+
+  const deletedMovie = await MovieService
+    .remove(id);
+
+  if (!deletedMovie) return res.status(400).json({ message: 'ID inválido!' });
+
+  return res.status(200).json(deletedMovie);
+};
+
 module.exports = {
   getAll,
   create,
   findOne,
+  remove,
 };

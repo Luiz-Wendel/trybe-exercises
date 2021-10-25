@@ -238,5 +238,85 @@ describe('Testa o controller Movie' , () => {
       });
     });
   });
+
+  describe('Ao chamar o controller de remove', () => {
+    describe('quando o o filme não existe no banco de dados', async () => {
+      const request = {};
+      const response = {};
+
+      before(() => {
+        request.params = {};
+
+        response.status = sinon.stub().returns(response);
+        response.json = sinon.stub().returns();
+
+        sinon.stub(MoviesService, 'remove').resolves(false);
+      });
+
+      after(() => {
+        MoviesService.remove.restore();
+      });
+
+      it('é chamado o método "status" passando o código 400', async () => {
+        await MoviesController.remove(request, response);
+
+        expect(response.status.calledWith(400)).to.be.true;
+      });
+
+      it('é chamado o método "json" passando um objeto', async () => {
+        await MoviesController.remove(request, response);
+
+        expect(response.json.calledWith(sinon.match.object)).to.be.true;
+      });
+
+      it('é chamado o método "json" passando um objeto com a mensagem de erro', async () => {
+        await MoviesController.remove(request, response);
+
+        expect(response.json.calledWith({ message: 'ID inválido!' })).to.be.true;
+      });
+    });
+
+    describe('quando existe o filme no banco de dados', async () => {
+      const request = {};
+      const response = {};
+      const movie = {
+        id: '604cb554311d68f491ba5781',
+        title: 'Example Movie',
+        directedBy: 'Jane Dow',
+        releaseYear: 1999,
+      };
+
+      before(() => {
+        request.params = { id: movie.id };
+
+        response.status = sinon.stub().returns(response);
+        response.json = sinon.stub().returns();
+
+        sinon.stub(MoviesService, 'remove').resolves(movie);
+      });
+
+      after(() => {
+        MoviesService.remove.restore();
+      });
+
+      it('é chamado o método "status" passando o código 200', async () => {
+        await MoviesController.remove(request, response);
+
+        expect(response.status.calledWith(200)).to.be.true;
+      });
+
+      it('é chamado o método "json" passando um objeto', async () => {
+        await MoviesController.remove(request, response);
+
+        expect(response.json.calledWith(sinon.match.object)).to.be.true;
+      });
+
+      it('é chamado o método "json" com o filme que foi removido', async () => {
+        await MoviesController.remove(request, response);
+
+        expect(response.json.calledWith(movie)).to.be.true;
+      });
+    });
+  });
 });
 
