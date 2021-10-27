@@ -92,8 +92,9 @@ app.post('/upload', upload.single('file'), controllers.upload);
 
 app.post('/multiple', multiple.array('files'), controllers.multiple);
 
-app.post('/profile', profile.single
-('profilePics'), controllers.profilePics);
+app.post('/profile', profile.single('profilePics'), controllers.profilePics);
+
+app.get('/profile/:id', controllers.getProfile);
 
 app.use(middlewares.error);
 
