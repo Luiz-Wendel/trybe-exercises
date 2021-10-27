@@ -25,6 +25,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/ping', controllers.ping);
 
+app.use(express.static(__dirname + '/uploads'));
+
 const storage = multer.diskStorage({
   destination: (_req, _file, callback) => {
     const path = 'uploads/';
@@ -38,7 +40,49 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage });
+const fileExtensionValidation = (file) => {
+  const splittedFileName = file.originalname.split('.');
+  const extension = splittedFileName[splittedFileName.length - 1];
+
+  if (extension !== 'png') {
+    return false;
+  }
+
+  return true;
+};
+
+const fileNameValidation = (file) => {
+  const path = 'uploads/';
+  let result;
+
+  if (fs.existsSync(path)) {
+    result = fs.readdirSync(path).some(existingFile => {
+      const splittedExistingFileName = existingFile.split('-');
+      splittedExistingFileName.shift();
+
+      const existingFileOriginalName = splittedExistingFileName.join('-');
+
+      return existingFileOriginalName === file.originalname;
+    });
+  }
+
+  return !result;
+};
+
+const upload = multer({
+  storage,
+  fileFilter: (_req, file, callback) => {
+    const isValidExtension = fileExtensionValidation(file);
+
+    if (!isValidExtension) return callback(new Error('Extension must be "png"'));
+
+    const isValidName = fileNameValidation(file);
+
+    if (!isValidName) return callback(new Error('File already exists'));
+
+    callback(null, true);
+  },
+});
 
 app.post('/upload', upload.single('file'), controllers.upload);
 
