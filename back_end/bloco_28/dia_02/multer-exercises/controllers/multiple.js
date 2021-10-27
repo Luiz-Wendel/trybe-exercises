@@ -6,5 +6,5 @@ module.exports = (req, res) => {
     url: `http://localhost:3000/${path}`,
   }));
 
-  res.status(200).json(createdFiles);
+  return res.status(200).json(createdFiles);
 };
