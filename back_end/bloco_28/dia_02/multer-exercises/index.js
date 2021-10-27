@@ -84,7 +84,13 @@ const upload = multer({
   },
 });
 
+const multiple = multer({
+  dest: 'uploads/'
+});
+
 app.post('/upload', upload.single('file'), controllers.upload);
+
+app.post('/multiple', multiple.array('files'), controllers.multiple);
 
 app.use(middlewares.error);
 
