@@ -3,7 +3,7 @@ const statusCodes = require('./statusCodesSchema');
 module.exports = {
   jwt: {
     not_found: {
-      statusCode: statusCodes.not_found,
+      statusCode: statusCodes.badRequest,
       info: {
         code: 'not_found',
         message: 'Token not found or present',
@@ -16,6 +16,13 @@ module.exports = {
       info: {
         code: 'access_denied',
         message: 'Access denied',
+      },
+    },
+    not_found: {
+      statusCode: statusCodes.notFound,
+      info: {
+        code: 'not_found',
+        message: 'User not found',
       },
     },
   },

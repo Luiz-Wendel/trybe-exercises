@@ -1,5 +1,6 @@
 module.exports = {
   ok: 200,
-  not_found: 400,
+  badRequest: 400,
   unauthorized: 401,
+  notFound: 404,
 };
