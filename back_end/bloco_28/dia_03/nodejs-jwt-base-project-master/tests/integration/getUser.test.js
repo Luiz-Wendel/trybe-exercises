@@ -64,6 +64,11 @@ describe('GET /api/users/:userId', () => {
         .set('authorization', token);
     });
 
+    after(async () => {
+      const usersCollection = connectionMock.db('jwt_exercise').collection('users');
+      await usersCollection.deleteMany({});
+    });
+
     it('should return status code 401', () => {
       expect(response.status).to.be.equal(401);
     });
@@ -78,6 +83,49 @@ describe('GET /api/users/:userId', () => {
 
     it(`should return the error message: "${errorMessage}"`, () => {
       expect(response.body.message).to.be.equal(errorMessage);
+    });
+  });
+
+  describe('on success', () => {
+    const user = users[0];
+    let id = '';
+
+    before(async () => {
+      const usersCollection = connectionMock.db('jwt_exercise').collection('users');
+      const { insertedId } = await usersCollection.insertOne({ ...user });
+      id = insertedId.toString();
+
+      const { token } = await chai.request(server)
+        .post('/api/login')
+        .send({ ...user })
+        .then((response) => response.body);
+
+      response = await chai.request(server)
+        .get(`/api/users/${insertedId.toString()}`)
+        .set('authorization', token);
+    });
+
+    after(async () => {
+      const usersCollection = connectionMock.db('jwt_exercise').collection('users');
+      await usersCollection.deleteMany({});
+    });
+
+    it('should return status code 200', () => {
+      expect(response.status).to.be.equal(200);
+    });
+
+    it('should return a body as an object', () => {
+      expect(response.body).to.be.an('object');
+    });
+
+    it('should return a body with the user properties', () => {
+      const userProperties = ['_id', 'username', 'password'];
+
+      expect(response.body).to.have.all.keys(userProperties);
+    });
+
+    it('should return the user info', () => {
+      expect(response.body).to.deep.equal({ _id: id, ...user });
     });
   });
 });
