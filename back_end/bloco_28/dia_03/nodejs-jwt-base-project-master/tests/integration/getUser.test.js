@@ -25,23 +25,23 @@ describe('GET /api/users/:userId', () => {
     const errorMessage = 'Token not found or present';
 
     before(async () => {
-      response = await chai.request(server).get('/api/users/:userId');
+      response = await chai.request(server).get('/api/users/test');
     });
 
     it('should return status code 400', () => {
       expect(response.status).to.be.equal(400);
     });
 
-    it('should return a json with as object', () => {
-      expect(response.json).to.be.an('object');
+    it('should return a body as an object', () => {
+      expect(response.body).to.be.an('object');
     });
 
-    it('should return a json with the "message" property', () => {
-      expect(response.json).to.have.ownProperty('message');
+    it('should return a body with the "message" property', () => {
+      expect(response.body).to.have.ownProperty('message');
     });
 
     it(`should return the error message: "${errorMessage}"`, () => {
-      expect(response.json.message).to.be.equal(errorMessage);
+      expect(response.body.message).to.be.equal(errorMessage);
     });
   });
 });
