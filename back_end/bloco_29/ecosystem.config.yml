@@ -5,15 +5,20 @@ apps:
     exec_mode: cluster
     instances: max
     max_memory_restart: 100M
-    env_dev:
+    increment_var: PORT
+    env:
       NODE_ENV: development
+      PORT: 3000
     env_prod:
       NODE_ENV: production
+      PORT: 3000
   - name: pm2-exercise-bonus
     script: ./src/index.js
     watch: ["src"]
     max_memory_restart: 100M
-    env_dev:
+    env:
       NODE_ENV: development
+      PORT: 3100
     env_prod:
       NODE_ENV: production
+      PORT: 3100
