@@ -9,3 +9,11 @@ apps:
       NODE_ENV: development
     env_prod:
       NODE_ENV: production
+  - name: pm2-exercise-bonus
+    script: ./src/index.js
+    watch: ["src"]
+    max_memory_restart: 100M
+    env_dev:
+      NODE_ENV: development
+    env_prod:
+      NODE_ENV: production
