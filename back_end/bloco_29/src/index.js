@@ -8,7 +8,9 @@ app.use(express.json());
 app.use(logger('dev'));
 
 app.get('/', (_req, res) => {
-  return res.status(200).json({ message: 'ok' });
+  const { NODE_ENV } = process.env;
+
+  return res.status(200).json({ environment: NODE_ENV });
 });
 
 const PORT = process.env.PORT || 3000;
