@@ -1,0 +1,7 @@
+apps:
+  - name: pm2-exercise
+    script: ./src/index.js
+    watch: ["src"]
+    exec_mode: cluster
+    instances: max
+    max_memory_restart: 100M
