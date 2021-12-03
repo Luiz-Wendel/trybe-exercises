@@ -4,7 +4,7 @@ module.exports = (io) => {
       console.log(`Lance feito no produto: ${ name }`);
 
       const newValue = value + 5;
-      io.emit('atualizaValor', newValue);
+      io.emit('atualizaValor', { name, value: newValue });
     });
   });
 };
