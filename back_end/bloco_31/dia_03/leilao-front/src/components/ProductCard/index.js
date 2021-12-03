@@ -4,10 +4,14 @@ import socket from '../../utils/socketClient';
 
 const ProductCard = ({ name, initialValue }) => {
   const [value, setValue] = React.useState(initialValue);
+  const [arrematador, setArrematador] = React.useState(undefined);
 
   React.useEffect(() => {
-    socket.on('atualizaValor', ({ name: productName, value: productValue }) => {
-      if (name === productName) setValue(productValue);
+    socket.on('atualizaValor', ({ name: productName, value: productValue, client }) => {
+      if (name === productName) {
+        setValue(productValue);
+        if (productValue >= 100) setArrematador(client ? client : 'Desconhecido');
+      }
     });
   }, [name]);
 
@@ -24,6 +28,9 @@ const ProductCard = ({ name, initialValue }) => {
       <button type="button" onClick={handleBet} disabled={value >= 100}>
         {value >= 100 ? 'Produto arrematado' : 'Dar um lance'}
       </button>
+      {
+        arrematador && <p>Arrematado por: { arrematador  }</p>
+      }
     </section>
   );
 };
