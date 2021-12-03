@@ -18,4 +18,6 @@ io.on('connection', (socket) => {
   console.log(`Novo usuário conectado. ID: ${socket.id}`);
 });
 
+require('./sockets/lances')(io);
+
 http.listen(PORT, () => console.log(`Servidor rodando na porta: ${colors.cyan(PORT)}`));
