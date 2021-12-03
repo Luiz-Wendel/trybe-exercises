@@ -6,8 +6,10 @@ const ProductCard = ({ name, initialValue }) => {
   const [value, setValue] = React.useState(initialValue);
 
   React.useEffect(() => {
-    
-  }, []);
+    socket.on('atualizaValor', ({ name: productName, value: productValue }) => {
+      if (name === productName) setValue(productValue);
+    });
+  }, [name]);
 
   const handleBet = () => {
     socket.emit('lance', { name, value });
