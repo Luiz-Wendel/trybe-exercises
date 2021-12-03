@@ -2,8 +2,8 @@ import ClientNameInput from "./components/ClientNameInput";
 import ProductCard from "./components/ProductCard";
 
 const products = [
-  { name: 'Celular', valorInicial: 20 },
-  { name: 'tv', valorInicial: 100 },
+  { name: 'celular', valorInicial: 20 },
+  { name: 'tv', valorInicial: 80 },
   { name: 'notebook', valorInicial: 53.25 }
 ];
 
