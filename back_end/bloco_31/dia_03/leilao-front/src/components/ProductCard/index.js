@@ -12,7 +12,9 @@ const ProductCard = ({ name, initialValue }) => {
   }, [name]);
 
   const handleBet = () => {
-    socket.emit('lance', { name, value });
+    const clientName = localStorage.getItem('clientName');
+
+    socket.emit('lance', { name, value, clientName });
   };
 
   return (
