@@ -1,3 +1,4 @@
+import ClientNameInput from "./components/ClientNameInput";
 import ProductCard from "./components/ProductCard";
 
 const products = [
@@ -10,6 +11,7 @@ function App() {
   return (
     <main>
       <h1>Leilão de centavos</h1>
+      <ClientNameInput />
       <section>
         {
           products.map(({name, valorInicial}) => (
