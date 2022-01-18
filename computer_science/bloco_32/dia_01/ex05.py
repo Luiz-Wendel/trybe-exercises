@@ -1,14 +1,14 @@
 import math
 
 
-def calculatePainting(area):
-    litersRequired = area / 3
-    bucketsRequired = math.ceil(litersRequired / 18)
+def calculate_painting(area):
+    liters_required = area / 3
+    buckets_required = math.ceil(liters_required / 18)
 
-    return bucketsRequired, bucketsRequired * 80
+    return buckets_required, buckets_required * 80
 
 
 if __name__ == "__main__":
-    print(calculatePainting(3))
-    print(calculatePainting(55))
-    print(calculatePainting(550))
+    print(calculate_painting(3))
+    print(calculate_painting(55))
+    print(calculate_painting(550))

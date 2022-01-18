@@ -1,9 +1,9 @@
-def printSquare(number):
+def print_square(number):
     for _ in range(number):
         print("*" * number)
 
 
 if __name__ == "__main__":
-    printSquare(5)
-    printSquare(2)
-    printSquare(10)
+    print_square(5)
+    print_square(2)
+    print_square(10)
