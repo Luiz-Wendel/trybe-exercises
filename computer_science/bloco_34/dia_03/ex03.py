@@ -12,17 +12,10 @@ class InverseCardDeckIterator:
         self.current_card = 0
 
     def __next__(self):
-        card_length = len(self.cards) - 1
-
         try:
-            index = card_length - self.current_card
+            card = self.cards[self.current_card - 1]
 
-            if index < 0:
-                raise IndexError
-
-            card = self.cards[index]
-
-            self.current_card += 1
+            self.current_card -= 1
             return card
         except IndexError:
             raise StopIteration
