@@ -1,11 +1,3 @@
-class CardDeckIterable:
-    def __init__(self, cards):
-        self.cards = cards
-
-    def __iter__(self):
-        return CardDeckIterator(self.cards)
-
-
 class CardDeckIterator:
     def __init__(self, cards):
         self.cards = cards
@@ -42,10 +34,10 @@ class CardDeck:
     def __len__(self):
         return len(self._cards)
 
-    def get_cards(self):
-        return self._cards
+    def __iter__(self):
+        return CardDeckIterator(self._cards)
 
 
 if __name__ == "__main__":
-    for card in CardDeckIterable(CardDeck().get_cards()):
+    for card in CardDeck():
         print(card)
