@@ -22,4 +22,16 @@ class SvgImage:
         self.format = "vector"
 
     def get_image(self):
-        return f"SVG {self.png_path} with {self.format}"
+        return f"SVG {self.svg_path} with {self.format}"
+
+
+class SvgAdapter(PngInterface):
+    def __init__(self, svg):
+        self.svg = svg
+
+    def draw(self):
+        print(f"Drawing {self.svg.get_image()}")
+
+
+if __name__ == "__main__":
+    SvgAdapter(SvgImage("path/svg.svg")).draw()
